@@ -1,5 +1,6 @@
 interface FIELD_TYPE{
     type : "String"| "Number" | "Enum" | "Date" | "Text"
+    PrimeryKey ?: boolean;
     size ?:number;
     autoIncrement ?: boolean;
     unique : boolean;
