@@ -10,14 +10,14 @@ interface FIELD_TYPE {
     preInsertHook?: Function;
     preUpdateHook?: Function;
     validate?: Function;
+    null: boolean;
 }
 interface FIELD {
-    name: string;
-    null: boolean;
+    fieldName: string;
     FieldType: FIELD_TYPE;
 }
 interface TABLE {
-    name: string;
+    tableName: string;
     fields: FIELD[];
     validate: () => boolean;
 }

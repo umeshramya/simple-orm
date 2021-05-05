@@ -107,5 +107,5 @@ dist
 /examples/test/yalc
 /examples/test/yalc.lock
 
-*/yalc
+*/.yalc
 */yalc.lock

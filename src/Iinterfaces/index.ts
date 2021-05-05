@@ -1,27 +1,27 @@
 interface FIELD_TYPE{
-    type : "String"| "Number" | "Enum" | "Date" | "Text" | "Boolean"
+    type : "String"| "Number" | "Enum" | "Date" | "Text" | "Boolean" | "Double"
     PrimeryKey ?: boolean;
     size ?:number;
     default ?: any;
     autoIncrement ?: boolean;
     unique : boolean;
-    values ?: any[];
+    values ?: any[];//ENUM values
     preSelectHook ?: Function;
     preInsertHook ?: Function;
     preUpdateHook ?: Function;
-    validate ?: Function
+    validate ?: Function;
+    null :boolean;
 }
 
 
 interface FIELD{
-    name : string;
-    null :boolean;
+    fieldName : string;
     FieldType :  FIELD_TYPE
    
 }
 
 interface TABLE{
-    name : string;
+    tableName : string;
     fields:FIELD[],
     validate:()=>boolean
 
