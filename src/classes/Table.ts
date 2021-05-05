@@ -105,11 +105,18 @@ export default class Table implements TABLE{
          return __sql.trim();
     }
 
-    /**
-     * relatetable
-     */
-    public relatetable() {
-        
+/**
+ * This function creates relationship
+ * @param thisTableFieldName FOREIGN KEY of this table
+ * @param otherTable  name of related table
+ * @param otherTablefieldName REFERENCES of retated table\
+ * @onDelete "RESTRICT" | "CASCADE"
+ * @onUpdate "RESTRICT" |"NO ACTION" | "CASCADE" | "SET NULL" | "SET DEFAULT"
+ */
+    public relatetable(thisTableFieldName:string,  otherTable:string, otherTablefieldName:string , onDelete:"RESTRICT" | "CASCADE", onUpdate: "RESTRICT" |"NO ACTION" | "CASCADE" | "SET NULL" | "SET DEFAULT") {
+        let sql = `ALTER TABLE ${this.tableName}
+        ADD KEY ${otherTable}_${this.tableName} (${thisTableFieldName});
+        ADD CONSTRAINT ${otherTable}_${this.tableName} FOREIGN KEY (${thisTableFieldName}) REFERENCES ${otherTable} (${otherTablefieldName}) ON DELETE ${onDelete} ON UPDATE ${onUpdate}`;
     }
 
     validate():boolean{
