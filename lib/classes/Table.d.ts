@@ -9,9 +9,14 @@ export default class Table implements TABLE {
      */
     createTable(): string;
     /**
-     * relatetable
+     * This function creates relationship
+     * @param thisTableFieldName FOREIGN KEY of this table
+     * @param otherTable  name of related table
+     * @param otherTablefieldName REFERENCES of retated table\
+     * @onDelete "RESTRICT" | "CASCADE"
+     * @onUpdate "RESTRICT" |"NO ACTION" | "CASCADE" | "SET NULL" | "SET DEFAULT"
      */
-    relatetable(): void;
+    relatetable(thisTableFieldName: string, otherTable: string, otherTablefieldName: string, onDelete: "RESTRICT" | "CASCADE", onUpdate: "RESTRICT" | "NO ACTION" | "CASCADE" | "SET NULL" | "SET DEFAULT"): string;
     validate(): boolean;
 }
 //# sourceMappingURL=Table.d.ts.map

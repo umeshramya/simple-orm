@@ -102,7 +102,7 @@ export default class Table implements TABLE{
 
 
         let __sql = `CREATE TABLE  IF NOT EXISTS ${this.tableName} (${__FiledKeys})ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4`
-         return __sql.trim();
+         return __sql.trim() + ";";
     }
 
 /**
@@ -113,10 +113,10 @@ export default class Table implements TABLE{
  * @onDelete "RESTRICT" | "CASCADE"
  * @onUpdate "RESTRICT" |"NO ACTION" | "CASCADE" | "SET NULL" | "SET DEFAULT"
  */
-    public relatetable(thisTableFieldName:string,  otherTable:string, otherTablefieldName:string , onDelete:"RESTRICT" | "CASCADE", onUpdate: "RESTRICT" |"NO ACTION" | "CASCADE" | "SET NULL" | "SET DEFAULT") {
-        let sql = `ALTER TABLE ${this.tableName}
-        ADD KEY ${otherTable}_${this.tableName} (${thisTableFieldName});
-        ADD CONSTRAINT ${otherTable}_${this.tableName} FOREIGN KEY (${thisTableFieldName}) REFERENCES ${otherTable} (${otherTablefieldName}) ON DELETE ${onDelete} ON UPDATE ${onUpdate}`;
+    public relatetable(thisTableFieldName:string,  otherTable:string, otherTablefieldName:string , onDelete:"RESTRICT" | "CASCADE" = "RESTRICT", onUpdate: "RESTRICT" |"NO ACTION" | "CASCADE" | "SET NULL" | "SET DEFAULT" = "CASCADE"):string {
+        let __sql = `ALTER TABLE ${this.tableName} ADD KEY ${otherTable}_${this.tableName} (${thisTableFieldName}); ALTER TABLE ${this.tableName} ADD CONSTRAINT ${otherTable}_${this.tableName} FOREIGN KEY (${thisTableFieldName}) REFERENCES ${otherTable} (${otherTablefieldName}) ON DELETE ${onDelete} ON UPDATE ${onUpdate}`;
+
+        return __sql.trim() + ";"
     }
 
     validate():boolean{
