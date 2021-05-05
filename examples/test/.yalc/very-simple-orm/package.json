@@ -1,0 +1,28 @@
+{
+  "name": "very-simple-orm",
+  "version": "1.0.0+a8c2d9a9",
+  "description": "This is simple orm for typesript/javascript projects",
+  "main": "lib/index.js",
+  "types": "lib",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -p .",
+    "dev": "npm run build && yalc publish && cd examples/test && yalc update && npm run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/umeshramya/simple-orm.git"
+  },
+  "keywords": [
+    "ORM",
+    "typescript",
+    "javascript"
+  ],
+  "author": "Dr Umesh R Bilagi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/umeshramya/simple-orm/issues"
+  },
+  "homepage": "https://github.com/umeshramya/simple-orm#readme",
+  "yalcSig": "a8c2d9a91edc013c75a83feba13e48ad"
+}
