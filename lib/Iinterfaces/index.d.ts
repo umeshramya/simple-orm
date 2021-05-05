@@ -1,5 +1,5 @@
 interface FIELD_TYPE {
-    type: "String" | "Number" | "Enum" | "Date" | "Text" | "Boolean";
+    type: "String" | "Number" | "Enum" | "Date" | "Text" | "Boolean" | "Double";
     PrimeryKey?: boolean;
     size?: number;
     default?: any;
