@@ -21,5 +21,13 @@ interface TABLE {
     fields: FIELD[];
     validate: () => boolean;
 }
-export type { TABLE, FIELD, FIELD_TYPE };
+interface SQL_VALUES {
+    sql: string;
+    values: any[];
+}
+interface FIELD_NAME_VALUE {
+    fieldName: string;
+    value: any;
+}
+export type { TABLE, FIELD, FIELD_TYPE, SQL_VALUES, FIELD_NAME_VALUE };
 //# sourceMappingURL=index.d.ts.map

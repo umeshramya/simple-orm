@@ -1,3 +1,10 @@
-let t =", UNIQUE KEY User_id(id),"
+let obj =[
+    {fieldname : "name", value : "umesh"},
+    {fieldname : "age", value : 51},
+    {fieldname : "gender", value : "Male"},
+]
 
-console.log(t.substring(t.length-1, t.length))
+
+obj.map(el=>{
+   
+})
