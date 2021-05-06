@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/umeshramya/simple-orm.git"
+    "url": "git+https://github.com/umeshramya/very-simple-orm.git"
   },
   "keywords": [
     "ORM",
@@ -21,7 +21,7 @@
   "author": "Dr Umesh R Bilagi",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/umeshramya/simple-orm/issues"
+    "url": "https://github.com/umeshramya/very-simple-orm/issues"
   },
-  "homepage": "https://github.com/umeshramya/simple-orm#readme"
+  "homepage": "https://github.com/umeshramya/very-simple-orm#readme"
 }
