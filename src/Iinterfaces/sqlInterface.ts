@@ -20,11 +20,11 @@ interface UPADTE{
 }
 
 interface INSERT{
-
+    insert(_insertFields:FIELD_NAME_VALUE[]):SQL_VALUES
 }
 
 interface DELETE{
-
+    deleteById(_field:FIELD_NAME_VALUE):SQL_VALUES
 }
 
 interface SQL_MASTER extends SELECT, UPADTE, INSERT, DELETE{

@@ -1,5 +1,7 @@
 import { FIELD, SQL_VALUES, TABLE } from "../Iinterfaces";
 import { FIELD_NAME_VALUE, SQL_MASTER } from "../Iinterfaces";
+import Delete from "./base_sql/Delete";
+import Insert from "./base_sql/Insert";
 import Select from "./base_sql/Select"
 import Update from "./base_sql/Update";
 
@@ -8,8 +10,10 @@ export default class Table implements TABLE, SQL_MASTER{
     readonly tableName!: string;
     readonly fields!: FIELD[];
 
-    private select = new Select(this.tableName)
-    private update = new Update(this.tableName)
+    private selectCls = new Select(this.tableName)
+    private updateCls = new Update(this.tableName)
+    private insertCls = new Insert(this.tableName)
+    private deleteCls = new Delete(this.tableName)
 
 
     constructor (_name:string, _fields:FIELD[]){
@@ -19,13 +23,30 @@ export default class Table implements TABLE, SQL_MASTER{
     }
     /**
      * 
+     * @param _insertFields 
+     * @returns 
+     */
+    insert(_insertFields: FIELD_NAME_VALUE[]): SQL_VALUES {
+        return this.insertCls.insert(_insertFields)
+    }
+
+    /**
+     * 
+     * @param _field 
+     * @returns 
+     */
+    deleteById(_field: FIELD_NAME_VALUE): SQL_VALUES {
+        return this.deleteCls.deleteById(_field)
+    }
+    /**
+     * 
      * @param _field 
      * @param _selectedFields 
      * @returns 
      */
     selectById(_field: FIELD_NAME_VALUE, _selectedFields?: string[]): SQL_VALUES {
         // write validation code here
-       return this.select.selectById(_field, _selectedFields)
+       return this.selectCls.selectById(_field, _selectedFields)
     }
 
     /**
@@ -36,7 +57,7 @@ export default class Table implements TABLE, SQL_MASTER{
      */
     updateById(_field: FIELD_NAME_VALUE, _updateFields: FIELD_NAME_VALUE[]): SQL_VALUES {
           // write validation code here
-        return this.update.updateById(_field, _updateFields);
+        return this.updateCls.updateById(_field, _updateFields);
     }
 
     
