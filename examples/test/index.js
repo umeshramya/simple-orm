@@ -64,11 +64,23 @@ let org = new Table("orgTest", [
 
 
 
+console.log(user.fields.map(el=>{
+    return el.fieldName
+}))
 
 
+console.log(org.insert([
+    {"fieldName" : "id", "value" : 1},
+    {"fieldName" : "name", "value" : "JJH"}
+]))
+// console.log(user.createTable())
+// console.log(org.createTable())
+// console.log(user.relatetable("orgId", "orgTest", "id", "RESTRICT", "RESTRICT"))
+// console.log(user.selectById({"fieldName": "id", "value" : 1}))
+// console.log(user.updateById({"fieldName" : "id", "value" : 1}, [
+//     {"fieldName" : "name" , value : "han"},
+//     {"fieldName" : "gender" , value : "Female"}
+// ]))
 
 
-console.log(user.createTable())
-console.log(org.createTable())
-console.log(user.relatetable("orgId", "orgTest", "id", "RESTRICT", "RESTRICT"))
 

@@ -1,26 +1,39 @@
-import { FIELD, SQL_VALUES, TABLE } from "../Iinterfaces";
+import { FIELD, SELECT, SQL_VALUES, TABLE } from "../Iinterfaces";
 import { FIELD_NAME_VALUE, SQL_MASTER } from "../Iinterfaces";
 import Delete from "./base_sql/Delete";
 import Insert from "./base_sql/Insert";
 import Select from "./base_sql/Select"
 import Update from "./base_sql/Update";
 
-export default class Table implements TABLE, SQL_MASTER{
+
+
+export default class Table  implements TABLE, SQL_MASTER {
     /**name of the table */
     readonly tableName!: string;
     readonly fields!: FIELD[];
 
-    private selectCls = new Select(this.tableName)
-    private updateCls = new Update(this.tableName)
-    private insertCls = new Insert(this.tableName)
-    private deleteCls = new Delete(this.tableName)
+
+    private selectCls:Select ;
+    private updateCls:Update ;
+    private insertCls:Insert ;
+    private deleteCls:Delete ;
+
+
 
 
     constructor (_name:string, _fields:FIELD[]){
 
         this.tableName = _name;
-        this.fields = _fields
+        this.fields = _fields;
+        this.selectCls = new Select(this.tableName)
+        this.updateCls = new Update(this.tableName)
+        this.insertCls = new Insert(this.tableName)
+        this.deleteCls = new Delete(this.tableName)
     }
+
+
+
+    
     /**
      * 
      * @param _insertFields 
@@ -178,6 +191,12 @@ export default class Table implements TABLE, SQL_MASTER{
 
 
 }
+
+
+
+
+
+ 
 
 
 
