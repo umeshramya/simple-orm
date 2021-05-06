@@ -16,7 +16,7 @@ export default class Table implements TABLE {
      * @onDelete "RESTRICT" | "CASCADE"
      * @onUpdate "RESTRICT" |"NO ACTION" | "CASCADE" | "SET NULL" | "SET DEFAULT"
      */
-    relatetable(thisTableFieldName: string, otherTable: string, otherTablefieldName: string, onDelete: "RESTRICT" | "CASCADE", onUpdate: "RESTRICT" | "NO ACTION" | "CASCADE" | "SET NULL" | "SET DEFAULT"): string;
+    relatetable(thisTableFieldName: string, otherTable: string, otherTablefieldName: string, onDelete?: "RESTRICT" | "CASCADE", onUpdate?: "RESTRICT" | "NO ACTION" | "CASCADE" | "SET NULL" | "SET DEFAULT"): string;
     validate(): boolean;
 }
 //# sourceMappingURL=Table.d.ts.map
