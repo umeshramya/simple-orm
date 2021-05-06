@@ -1,15 +1,20 @@
 import { FIELD, TABLE } from "../Iinterfaces";
+import Select from "./base_sql/Select"
 
 export default class Table implements TABLE{
     /**name of the table */
-    tableName: string;
-    fields: FIELD[];
+    readonly tableName!: string;
+    readonly fields!: FIELD[];
+
+   
 
 
     constructor (_name:string, _fields:FIELD[]){
         this.tableName = _name;
         this.fields = _fields
     }
+
+    private select = new Select(this.tableName)
 
     /**
      * createTable

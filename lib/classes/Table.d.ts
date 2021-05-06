@@ -1,9 +1,10 @@
 import { FIELD, TABLE } from "../Iinterfaces";
 export default class Table implements TABLE {
     /**name of the table */
-    tableName: string;
-    fields: FIELD[];
+    readonly tableName: string;
+    readonly fields: FIELD[];
     constructor(_name: string, _fields: FIELD[]);
+    private select;
     /**
      * createTable
      */
