@@ -1,0 +1,1 @@
+{"version":3,"file":"Insert.js","sourceRoot":"","sources":["../../../src/classes/base_sql/Insert.ts"],"names":[],"mappings":";;;;;AACA,gDAAwB;AAExB,MAAqB,MAAO,SAAQ,aAAG;IACnC,MAAM,CAAC,aAAiC;QACpC,IAAI,KAAK,GAAQ,EAAE,CAAC;QACpB,IAAI,QAAQ,GAAO,EAAE,CAAC;QAGtB,IAAI,GAAG,GAAa,EAAC,KAAK,EAAG,KAAK,EAAG,QAAQ,EAAE,QAAQ,EAAC,CAAC;QACzD,OAAO,GAAG,CAAC;IAGf,CAAC;CAEJ;AAZD,yBAYC"}

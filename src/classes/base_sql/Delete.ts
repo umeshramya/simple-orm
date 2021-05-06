@@ -3,7 +3,12 @@ import Sql from "./SQL";
 
 export default class Delete extends Sql implements DELETE{
     deleteById(_field: FIELD_NAME_VALUE): SQL_VALUES {
-        throw new Error("Method not implemented.");
+        let __sql:string="";
+        let __values:any[]=[];
+
+
+        let ret:SQL_VALUES= {"sql" : __sql , "values": __values};
+        return ret;
     }
     
 }

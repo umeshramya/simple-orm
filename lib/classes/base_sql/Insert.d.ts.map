@@ -1,0 +1,1 @@
+{"version":3,"file":"Insert.d.ts","sourceRoot":"","sources":["../../../src/classes/base_sql/Insert.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,gBAAgB,EAAE,MAAM,EAAE,UAAU,EAAE,MAAM,mBAAmB,CAAC;AACzE,OAAO,GAAG,MAAM,OAAO,CAAC;AAExB,MAAM,CAAC,OAAO,OAAO,MAAO,SAAQ,GAAI,YAAW,MAAM;IACrD,MAAM,CAAC,aAAa,EAAE,gBAAgB,EAAE,GAAG,UAAU;CAWxD"}

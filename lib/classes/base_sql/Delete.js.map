@@ -1,0 +1,1 @@
+{"version":3,"file":"Delete.js","sourceRoot":"","sources":["../../../src/classes/base_sql/Delete.ts"],"names":[],"mappings":";;;;;AACA,gDAAwB;AAExB,MAAqB,MAAO,SAAQ,aAAG;IACnC,UAAU,CAAC,MAAwB;QAC/B,IAAI,KAAK,GAAQ,EAAE,CAAC;QACpB,IAAI,QAAQ,GAAO,EAAE,CAAC;QAGtB,IAAI,GAAG,GAAa,EAAC,KAAK,EAAG,KAAK,EAAG,QAAQ,EAAE,QAAQ,EAAC,CAAC;QACzD,OAAO,GAAG,CAAC;IACf,CAAC;CAEJ;AAVD,yBAUC"}

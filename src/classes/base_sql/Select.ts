@@ -22,5 +22,6 @@ export default class Select extends Sql implements SELECT{
         __values = [_field["value"]]
 
         return {"sql" : __sql, "values" : __values}
+    }
         
 }
