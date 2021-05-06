@@ -110,6 +110,6 @@ yalc.lock
 example/test/yalc.lock
 
 #npm ingnore specifics
-example/
+examples/
 
 
