@@ -1,8 +1,8 @@
-import { FIELD_NAME_VALUE} from "../../Iinterfaces/index"
+import { FIELD_NAME_VALUE, SQL_VALUES} from "../../Iinterfaces/index"
 import Sql from "./SQL";
 export default class Update extends Sql{
 
-    public updateById(_field:FIELD_NAME_VALUE, _updateFields:FIELD_NAME_VALUE[]):void{
+    public updateById(_field:FIELD_NAME_VALUE, _updateFields:FIELD_NAME_VALUE[]):SQL_VALUES{
         let __sql:string="";
         let __fieldStr:string="";
         let __values:any[]=[];
@@ -13,7 +13,7 @@ export default class Update extends Sql{
         __values.push(_field.value);
         __sql = `UPDATE ${this._tableName} SET ${__fieldStr} WHERE ${this._tableName}.${_field.fieldName} = ?`;
 
-        this.sqlAndValues={ "sql" : __sql, "values" : __values};
+        return{ "sql" : __sql, "values" : __values};
     }
 
 

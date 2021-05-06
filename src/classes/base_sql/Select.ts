@@ -1,14 +1,14 @@
-import {FIELD_NAME_VALUE} from "../../Iinterfaces/index"
+import {FIELD_NAME_VALUE, SELECT, SQL_VALUES} from "../../Iinterfaces/index"
 import Sql from "./SQL";
 
-export default class Select extends Sql{
+export default class Select extends Sql implements SELECT{
     /**
      * select the table by single filed i.e id 
      * @param _field this is  object with id field name and it value as clause
      * @param _tableName name of the table
      * @param _selectedFields field to returned if undefined all fields will be returned
      */
-    public selectById(_field:FIELD_NAME_VALUE, _selectedFields ?:string[]):void {
+    public selectById(_field:FIELD_NAME_VALUE, _selectedFields ?:string[]):SQL_VALUES {
         let __sql:string="";
         let __values:any[]=[];
        
@@ -21,6 +21,6 @@ export default class Select extends Sql{
 
         __values = [_field["value"]]
 
-        this.sqlAndValues= {"sql" : __sql, "values" : __values}
-    }
+        return {"sql" : __sql, "values" : __values}
+        
 }

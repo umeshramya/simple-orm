@@ -1,20 +1,45 @@
-import { FIELD, TABLE } from "../Iinterfaces";
+import { FIELD, SQL_VALUES, TABLE } from "../Iinterfaces";
+import { FIELD_NAME_VALUE, SQL_MASTER } from "../Iinterfaces";
 import Select from "./base_sql/Select"
+import Update from "./base_sql/Update";
 
-export default class Table implements TABLE{
+export default class Table implements TABLE, SQL_MASTER{
     /**name of the table */
     readonly tableName!: string;
     readonly fields!: FIELD[];
 
-   
+    private select = new Select(this.tableName)
+    private update = new Update(this.tableName)
 
 
     constructor (_name:string, _fields:FIELD[]){
+
         this.tableName = _name;
         this.fields = _fields
     }
+    /**
+     * 
+     * @param _field 
+     * @param _selectedFields 
+     * @returns 
+     */
+    selectById(_field: FIELD_NAME_VALUE, _selectedFields?: string[]): SQL_VALUES {
+        // write validation code here
+       return this.select.selectById(_field, _selectedFields)
+    }
 
-    private select = new Select(this.tableName)
+    /**
+     * 
+     * @param _field 
+     * @param _updateFields 
+     * @returns 
+     */
+    updateById(_field: FIELD_NAME_VALUE, _updateFields: FIELD_NAME_VALUE[]): SQL_VALUES {
+          // write validation code here
+        return this.update.updateById(_field, _updateFields);
+    }
+
+    
 
     /**
      * createTable
@@ -118,11 +143,13 @@ export default class Table implements TABLE{
  * @onDelete "RESTRICT" | "CASCADE"
  * @onUpdate "RESTRICT" |"NO ACTION" | "CASCADE" | "SET NULL" | "SET DEFAULT"
  */
-    public relatetable(thisTableFieldName:string,  otherTable:string, otherTablefieldName:string , onDelete:"RESTRICT" | "CASCADE" = "RESTRICT", onUpdate: "RESTRICT" |"NO ACTION" | "CASCADE" | "SET NULL" | "SET DEFAULT" = "CASCADE"):string {
+    public relatetable(thisTableFieldName:string,  otherTable:string, otherTablefieldName:string , onDelete:"RESTRICT" | "CASCADE" = "RESTRICT", onUpdate: "RESTRICT" |"NO ACTION" | "CASCADE" | "SET NULL" | "SET DEFAULT" = "RESTRICT"):string {
         let __sql = `ALTER TABLE ${this.tableName} ADD KEY ${otherTable}_${this.tableName} (${thisTableFieldName}); ALTER TABLE ${this.tableName} ADD CONSTRAINT ${otherTable}_${this.tableName} FOREIGN KEY (${thisTableFieldName}) REFERENCES ${otherTable} (${otherTablefieldName}) ON DELETE ${onDelete} ON UPDATE ${onUpdate}`;
 
         return __sql.trim() + ";"
     }
+
+    
 
     validate():boolean{
         return true;
