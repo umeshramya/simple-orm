@@ -3,7 +3,7 @@ const { Table } = require("very-simple-orm")
 let user = new Table("userTest", [
     {
         "fieldName": "id",
-        "type": "Number",
+        "type": ["Number", ],
         "autoIncrement": true,
         "unique": true,
         "PrimeryKey": true,

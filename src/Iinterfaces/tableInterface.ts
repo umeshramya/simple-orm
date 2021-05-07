@@ -1,28 +1,102 @@
 /** used in table cor creatation */
-type size = number;
-type autoIncrement = boolean;
-type enumValues = any[];
+
+/**
+ * string and size
+ */
+type StringType = {
+    String : "String";
+    size ?:number 
+}
+
+/**
+ * property number and autoincrement
+ */
+type  NumberType = {
+    Number: "Number";
+    autoIncrement ?:Boolean;
+}
+
+/**
+ * enum and enum values
+ */
+type EnumType = {
+    Enum : "Enum";
+    enumValues : any[]
+}
+
+/**
+ * Date
+ */
+type DateType = {
+    Date: "Date"
+}
+/**
+ * Boolean
+ */
+type BooleanType ={
+    Boolean : "Boolean"
+}
+/**
+ * double
+ */
+type DoubleType ={
+    Double : "Double"
+}
+/**
+ * Text
+ */
+type TextType={
+    Text : "Text"
+}
+
+type CURRENT_TIMESTAMP_TYPE={
+    CURRENT_TIMESTAMP : "CURRENT_TIMESTAMP"
+}
+
+type NULL_TYPE ={
+    NULL : "NULL"
+}
+
+type AS_DEFINED_TYPE ={
+    AS_DEFINED : "AS DEFINED"
+    value : any
+}
+
+
 interface FIELD{
+    /**
+     * name of the field
+     */
     fieldName:string;
-    type : ["String", size]| ["Number", autoIncrement]| ["Enum", enumValues] | ["Date" ]|["Text" ]|["Boolean" ]|["Double"]
+    /**
+     * example type : {"String" : "string", "size" : 123}
+     * 
+     * StringType has 'size' as one more property
+     * 
+     * NumberType has 'autoIncrement' as one more property
+     * 
+     * EnumType has "enumValues" as one more property
+     */
+    type  : StringType | NumberType | EnumType | DateType | TextType | BooleanType | DoubleType | TextType
+    /**
+     * is the filed primery key
+     */
     PrimeryKey ?: boolean;
-    default ?: ["CURRENT_TIMESTAMP"] | ["NULL"] | ["AS DEFINED", any  ];
+    /**
+     * exaple  { "AS_DEFINED_TYPE" : "AS_DEFINED_TYPE", value ; "India"}
+     * AS_DEFINED_TYPE has on property of value 
+     */
+    default ?: CURRENT_TIMESTAMP_TYPE | NULL_TYPE | AS_DEFINED_TYPE;
     unique ?: boolean;
-    preSelectHook ?: Function;
-    preInsertHook ?: Function;
-    preUpdateHook ?: Function;
+    preSelectHook ?: (fieldValue:any, ...args:any[])=>boolean;
+    preInsertHook ?: (fieldValue:any, ...args:any[])=>boolean;
+    preUpdateHook ?: (fieldValue:any, ...args:any[])=>boolean;
     validate ?: Function;
-    null :boolean;
+    null ?:boolean;
 }
 
 /**
  * each field of table
- */
-// interface FIELD{
-//     fieldName : string;
-//     FieldType :  FIELD_TYPE
-   
-// }
 /**
  * Table interface
  */
