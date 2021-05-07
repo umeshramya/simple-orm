@@ -24,7 +24,7 @@ let user = new Table("userTest", [
         "fieldName": "password",
         "type": "String",
         "size": 200,
-        "unique": true,
+        "unique": false,
         "null": false,
     },
     {
