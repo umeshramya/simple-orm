@@ -1,5 +1,6 @@
 /** used in table cor creatation */
-interface FIELD_TYPE{
+interface FIELD{
+    fieldName : string;
     type : "String"| "Number" | "Enum" | "Date" | "Text" | "Boolean" | "Double"
     PrimeryKey ?: boolean;
     size ?:number;
@@ -17,11 +18,11 @@ interface FIELD_TYPE{
 /**
  * each field of table
  */
-interface FIELD{
-    fieldName : string;
-    FieldType :  FIELD_TYPE
+// interface FIELD{
+//     fieldName : string;
+//     FieldType :  FIELD_TYPE
    
-}
+// }
 /**
  * Table interface
  */
@@ -33,4 +34,4 @@ interface TABLE{
 }
 
 
-export type {TABLE, FIELD, FIELD_TYPE}
+export type {TABLE, FIELD}

@@ -1,62 +1,63 @@
-const {Table} = require("very-simple-orm")
+const { Table } = require("very-simple-orm")
 
-let user = new Table("userTest",[
-    {"fieldName" : "id",  FieldType : {
-        "type" : "Number",
-        "autoIncrement" : true,
-        "unique" : true,
-        "PrimeryKey" : true ,
-        "null" : false,  
-
-    } },
-    {"fieldName" : "username",  FieldType : {
-        "type" : "String",
-        "unique" : true,
-        "size" : 50,
-        "null" : false
-    }},
-    {"fieldName" : "password", FieldType : {
-        "type" : "String",
-        "size" : 200,
-        "unique" : true,
-        "null" : false, 
-    }},
+let user = new Table("userTest", [
     {
-        "fieldName" : "gender",
-        "FieldType" : {
-            "type" : "Enum",
-            "null" : false,
-            "values" : ['Male','Female','Not Specified','Transgender']
-        }
+        "fieldName": "id",
+        "type": "Number",
+        "autoIncrement": true,
+        "unique": true,
+        "PrimeryKey": true,
+        "null": false,
+
     },
     {
-        "fieldName" : "orgId",
-        "FieldType" : {
-            "null" :false,
-            "type" : "Number",
-        }
+        "fieldName": "username",
+        "type": "String",
+        "unique": true,
+        "size": 50,
+        "null": false
+    },
+    {
+        "fieldName": "password",
+        "type": "String",
+        "size": 200,
+        "unique": true,
+        "null": false,
+    },
+    {
+        "fieldName": "gender",
+        "type": "Enum",
+        "null": false,
+        "values": ['Male', 'Female', 'Not Specified', 'Transgender']
+
+    },
+    {
+        "fieldName": "orgId",
+        "null": false,
+        "type": "Number",
+
     }
-    
-    
+
+
 ])
 
 
 let org = new Table("orgTest", [
-    {"fieldName" : "id", "FieldType" : {
-        "type" : "Number",
-        "PrimeryKey" : true,
-        "null" : false,
-        "autoIncrement" : true,
-        "unique" : true
-    }},
     {
-        "fieldName" : "orgName",
-        "FieldType" : {
-            "type" : "String",
-            "unique" : true,
-            "null" : false,
-            "size" : 255
-        }
+        "fieldName": "id",
+        "type": "Number",
+        "PrimeryKey": true,
+        "null": false,
+        "autoIncrement": true,
+        "unique": true
+    },
+    {
+        "fieldName": "orgName",
+        "type": "String",
+        "unique": true,
+        "null": false,
+        "size": 255
+
     }
 ])
 
@@ -64,23 +65,26 @@ let org = new Table("orgTest", [
 
 
 
-console.log(user.fields.map(el=>{
+console.log(user.fields.map(el => {
     return el.fieldName
 }))
 
 
-console.log(org.insert([
-    {"fieldName" : "id", "value" : 1},
-    {"fieldName" : "name", "value" : "JJH"}
+//return the sql string and values of arguments
+console.log(user.createTable())
+console.log(org.createTable())
+console.log(user.relatetable("orgId", "orgTest", "id", "RESTRICT", "RESTRICT"))
+console.log(user.selectById({"fieldName": "id", "value" : 1}))
+console.log(user.updateById({"fieldName" : "id", "value" : 1}, [
+    {"fieldName" : "name" , value : "han"},
+    {"fieldName" : "gender" , value : "Female"}
 ]))
-// console.log(user.createTable())
-// console.log(org.createTable())
-// console.log(user.relatetable("orgId", "orgTest", "id", "RESTRICT", "RESTRICT"))
-// console.log(user.selectById({"fieldName": "id", "value" : 1}))
-// console.log(user.updateById({"fieldName" : "id", "value" : 1}, [
-//     {"fieldName" : "name" , value : "han"},
-//     {"fieldName" : "gender" , value : "Female"}
-// ]))
+console.log(org.insert([
+    { "fieldName": "id", "value": 1 },
+    { "fieldName": "name", "value": "JJH" }
+]))
+console.log(user.deleteById({fieldName : "id", "value" : 1}))
+
 
 
 
