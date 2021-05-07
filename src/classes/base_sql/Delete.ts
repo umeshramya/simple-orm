@@ -6,7 +6,8 @@ export default class Delete extends Sql implements DELETE{
         let __sql:string="";
         let __values:any[]=[];
 
-
+        __sql = `DELETE FROM ${this._tableName} WHERE ${_field.fieldName} = ?`
+        __values.push(_field.value)
         let ret:SQL_VALUES= {"sql" : __sql , "values": __values};
         return ret;
     }

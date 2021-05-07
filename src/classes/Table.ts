@@ -1,4 +1,4 @@
-import { FIELD, SELECT, SQL_VALUES, TABLE } from "../Iinterfaces";
+import {FIELD,  SQL_VALUES, TABLE } from "../Iinterfaces";
 import { FIELD_NAME_VALUE, SQL_MASTER } from "../Iinterfaces";
 import Delete from "./base_sql/Delete";
 import Insert from "./base_sql/Insert";
@@ -40,6 +40,7 @@ export default class Table  implements TABLE, SQL_MASTER {
      * @returns 
      */
     insert(_insertFields: FIELD_NAME_VALUE[]): SQL_VALUES {
+        // write code for valdation of fileds here 
         return this.insertCls.insert(_insertFields)
     }
 
@@ -88,33 +89,33 @@ export default class Table  implements TABLE, SQL_MASTER {
 
 
             // set type of field 
-            if(curField.FieldType.type === "String"){
+            if(curField.type[0] === "String"){
                 __fields = __fields + " varchar"
             //size of Field
-            if(curField.FieldType.size){
-                __fields = __fields + "("+ curField.FieldType.size +")";
+            if(curField.type[1]>0 && curField.type[1] < 255){
+                __fields = __fields + "("+ curField.type[1]+")";
             }else{
                 __fields = __fields + "(255)";
             }
-            }else if (curField.FieldType.type === "Number"){
+            }else if (curField.type[0] === "Number"){
                 __fields = __fields + " int"
-                if(curField.FieldType.autoIncrement){
+                if(curField.type[1]){
                     __fields = __fields + "  AUTO_INCREMENT"
                 }
-            }else if (curField.FieldType.type === "Date"){
+            }else if (curField.type[0] === "Date"){
                 __fields = __fields + " date"
-            }else if (curField.FieldType.type === "Text"){
+            }else if (curField.type[0] === "Text"){
                 __fields = __fields + " text"
-            }else if(curField.FieldType.type === "Boolean"){
+            }else if(curField.type[0] === "Boolean"){
                 __fields = __fields + " tinyint(1)"
-            }else if(curField.FieldType.type === "Double"){
+            }else if(curField.type[0] === "Double"){
                 __fields = __fields + " double";
-            }else if(curField.FieldType.type === "Enum"){
+            }else if(curField.type[0] === "Enum"){
                 __fields = __fields + " enum";
 
-                if(curField.FieldType.values){
+                if(curField.type[1]){
                  let EnumArray:string="";
-                 curField.FieldType.values.forEach(el=>{
+                 curField.type[1].forEach(el=>{
                     EnumArray = `${EnumArray}, "${el}"`
                  })
                  EnumArray = EnumArray.trim().substring(1, EnumArray.trim().length)
@@ -127,15 +128,15 @@ export default class Table  implements TABLE, SQL_MASTER {
  
 
             // set null or not null
-            if (curField.FieldType.null){
+            if (curField.null){
                 __fields= __fields +   " NULL"
             }else{
                 __fields =__fields +  " NOT NULL"
             }
 
             // default value
-            if(curField.FieldType.default){
-                __fields = __fields + "(" + curField.FieldType.default + ")"
+            if(curField.default){
+                __fields = __fields + "DEFAULT (" + curField.default[curField.default.length -1] + ")"
             }
 
             __fields = __fields + ","
@@ -147,10 +148,10 @@ export default class Table  implements TABLE, SQL_MASTER {
           */
         let __keys:string =""
          this.fields.forEach(curField=>{
-             if(curField.FieldType.PrimeryKey){
+             if(curField.PrimeryKey){
                  __keys = __keys + " PRIMARY KEY ("+  curField.fieldName +"),"
              }
-             if(curField.FieldType.unique){
+             if(curField.unique){
                 __keys = __keys + " UNIQUE KEY " + this.tableName + "_" + curField.fieldName + "(" + curField.fieldName+"),"
             }
          })
