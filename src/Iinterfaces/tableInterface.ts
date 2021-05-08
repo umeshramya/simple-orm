@@ -28,29 +28,29 @@ interface EnumType {
  * Date
  */
 interface DateType  {
-    Date: "Date"
+    Date: "Date";
 }
 /**
  * Boolean
  */
 interface BooleanType{
-    Boolean : "Boolean"
+    Boolean : "Boolean";
 }
 /**
  * double
  */
 interface DoubleType{
-    Double : "Double"
+    Double : "Double";
 }
 /**
  * Text
  */
 interface TextType{
-    Text : "Text"
+    Text : "Text";
 }
 
 interface CURRENT_TIMESTAMP_TYPE{
-    CURRENT_TIMESTAMP : "CURRENT_TIMESTAMP"
+    CURRENT_TIMESTAMP : "CURRENT_TIMESTAMP";
 }
 
 interface NULL_TYPE {

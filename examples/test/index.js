@@ -27,7 +27,8 @@ let user = new Table("userTest", [
         "fieldName": "gender",
         "type": {"Enum" : "Enum", "enumValues" :['Male', 'Female', 'Not Specified', 'Transgender'] },
         "null": false,
-        "unique" : false
+        "unique" : false,
+        "default" : {"AS_DEFINED" : "AS DEFINED", "value" : "Male"}
 
 
     },
@@ -63,9 +64,7 @@ let org = new Table("orgTest", [
 
 
 
-console.log(user.fields.map(el => {
-    return el.fieldName
-}))
+
 
 
 //return the sql string and values of arguments
@@ -82,6 +81,9 @@ console.log(org.insert([
     { "fieldName": "name", "value": "JJH" }
 ]))
 console.log(user.deleteById({fieldName : "id", "value" : 1}))
+console.log(user.fields.map(el => {
+    return el.fieldName
+}))
 
 
 
