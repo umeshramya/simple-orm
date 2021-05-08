@@ -3,15 +3,15 @@
 /**
  * string and size
  */
-type StringType = {
+interface StringType{
     String : "String";
-    size ?:number 
+    size ?:number ;
 }
 
 /**
  * property number and autoincrement
  */
-type  NumberType = {
+interface NumberType{
     Number: "Number";
     autoIncrement ?:Boolean;
 }
@@ -19,7 +19,7 @@ type  NumberType = {
 /**
  * enum and enum values
  */
-type EnumType = {
+interface EnumType {
     Enum : "Enum";
     enumValues : any[]
 }
@@ -27,37 +27,37 @@ type EnumType = {
 /**
  * Date
  */
-type DateType = {
+interface DateType  {
     Date: "Date"
 }
 /**
  * Boolean
  */
-type BooleanType ={
+interface BooleanType{
     Boolean : "Boolean"
 }
 /**
  * double
  */
-type DoubleType ={
+interface DoubleType{
     Double : "Double"
 }
 /**
  * Text
  */
-type TextType={
+interface TextType{
     Text : "Text"
 }
 
-type CURRENT_TIMESTAMP_TYPE={
+interface CURRENT_TIMESTAMP_TYPE{
     CURRENT_TIMESTAMP : "CURRENT_TIMESTAMP"
 }
 
-type NULL_TYPE ={
+interface NULL_TYPE {
     NULL : "NULL"
 }
 
-type AS_DEFINED_TYPE ={
+interface AS_DEFINED_TYPE {
     AS_DEFINED : "AS DEFINED"
     value : any
 }
@@ -108,42 +108,83 @@ interface TABLE{
 }
 
  function stringType(obj:any ):obj is StringType{
-    return obj;
+    if(obj.String){
+        return obj
+    }else{
+        return false
+    }
+    
 }
  function numberType(obj:any ):obj is NumberType{
-    return obj;
+    if(obj.Number){
+        return obj
+    }else{
+        return false
+    }
 }
 function dateType(obj:any ):obj is DateType{
-    return obj;
+    if(obj.Date){
+        return obj
+    }else{
+        return false
+    }
 }
 function enumType(obj:any ):obj is EnumType{
-    return obj;
+    if(obj.Enum){
+        return obj
+    }else{
+        return false
+    }
 }
 function booleanType(obj:any ):obj is BooleanType{
-    return obj;
+    if(obj.Boolean){
+        return obj
+    }else{
+        return false
+    }
 }
 function doubleType(obj:any ):obj is DoubleType{
-    return obj;
+    if(obj.Double){
+        return obj
+    }else{
+        return false
+    }
 }
 function textType(obj:any ):obj is TextType{
-    return obj;
+    if(obj.Text){
+        return obj
+    }else{
+        return false
+    }
 }
 
 
 
-export function CURRENT_TIMESTAMP(obj:any ):obj is CURRENT_TIMESTAMP_TYPE{
-    return obj;
+function CURRENT_TIMESTAMP(obj:any ):obj is CURRENT_TIMESTAMP_TYPE{
+    if(obj.CURRENT_TIMESTAMP){
+        return obj
+    }else{
+        return false
+    }
 }
-export function NULL(obj:any ):obj is NULL_TYPE{
-    return obj;
+ function NULL(obj:any ):obj is NULL_TYPE{
+    if(obj.NULL){
+        return obj
+    }else{
+        return false
+    }
 }
-export function AS_DEFINED(obj:any ):obj is AS_DEFINED_TYPE{
-    return obj;
+function AS_DEFINED(obj:any ):obj is AS_DEFINED_TYPE{
+    if(obj.AS_DEFINED){
+        return obj
+    }else{
+        return false
+    }
 }
 
 
 
 
 
-export { stringType, numberType, enumType, dateType, booleanType, doubleType, textType}
+export { stringType, numberType, enumType, dateType, booleanType, doubleType, textType, CURRENT_TIMESTAMP, NULL, AS_DEFINED}
 export type {TABLE, FIELD  }

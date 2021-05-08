@@ -143,9 +143,9 @@ export default class Table implements TABLE, SQL_MASTER {
 
             // default value
             if (CURRENT_TIMESTAMP(curField.default)) {
-                __fields = __fields + "DEFAULT (" + curField.default.CURRENT_TIMESTAMP + ")"
+                __fields = __fields + "DEFAULT (CURRENT_TIMESTAMP)"
             } else if (NULL(curField.default)) {
-                __fields = __fields + "DEFAULT (" + curField.default.NULL + ")"
+                __fields = __fields + "DEFAULT (NULL)"
             } else if (AS_DEFINED(curField.default)) {
                 __fields = __fields + "DEFAULT (" + curField.default.value + ")"
             }

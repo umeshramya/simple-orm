@@ -2,58 +2,58 @@
 /**
  * string and size
  */
-declare type StringType = {
+interface StringType {
     String: "String";
     size?: number;
-};
+}
 /**
  * property number and autoincrement
  */
-declare type NumberType = {
+interface NumberType {
     Number: "Number";
     autoIncrement?: Boolean;
-};
+}
 /**
  * enum and enum values
  */
-declare type EnumType = {
+interface EnumType {
     Enum: "Enum";
     enumValues: any[];
-};
+}
 /**
  * Date
  */
-declare type DateType = {
+interface DateType {
     Date: "Date";
-};
+}
 /**
  * Boolean
  */
-declare type BooleanType = {
+interface BooleanType {
     Boolean: "Boolean";
-};
+}
 /**
  * double
  */
-declare type DoubleType = {
+interface DoubleType {
     Double: "Double";
-};
+}
 /**
  * Text
  */
-declare type TextType = {
+interface TextType {
     Text: "Text";
-};
-declare type CURRENT_TIMESTAMP_TYPE = {
+}
+interface CURRENT_TIMESTAMP_TYPE {
     CURRENT_TIMESTAMP: "CURRENT_TIMESTAMP";
-};
-declare type NULL_TYPE = {
+}
+interface NULL_TYPE {
     NULL: "NULL";
-};
-declare type AS_DEFINED_TYPE = {
+}
+interface AS_DEFINED_TYPE {
     AS_DEFINED: "AS DEFINED";
     value: any;
-};
+}
 interface FIELD {
     /**
      * name of the field
@@ -102,9 +102,9 @@ declare function enumType(obj: any): obj is EnumType;
 declare function booleanType(obj: any): obj is BooleanType;
 declare function doubleType(obj: any): obj is DoubleType;
 declare function textType(obj: any): obj is TextType;
-export declare function CURRENT_TIMESTAMP(obj: any): obj is CURRENT_TIMESTAMP_TYPE;
-export declare function NULL(obj: any): obj is NULL_TYPE;
-export declare function AS_DEFINED(obj: any): obj is AS_DEFINED_TYPE;
-export { stringType, numberType, enumType, dateType, booleanType, doubleType, textType };
+declare function CURRENT_TIMESTAMP(obj: any): obj is CURRENT_TIMESTAMP_TYPE;
+declare function NULL(obj: any): obj is NULL_TYPE;
+declare function AS_DEFINED(obj: any): obj is AS_DEFINED_TYPE;
+export { stringType, numberType, enumType, dateType, booleanType, doubleType, textType, CURRENT_TIMESTAMP, NULL, AS_DEFINED };
 export type { TABLE, FIELD };
 //# sourceMappingURL=tableInterface.d.ts.map
