@@ -107,5 +107,43 @@ interface TABLE{
 
 }
 
+ function stringType(obj:any ):obj is StringType{
+    return obj;
+}
+ function numberType(obj:any ):obj is NumberType{
+    return obj;
+}
+function dateType(obj:any ):obj is DateType{
+    return obj;
+}
+function enumType(obj:any ):obj is EnumType{
+    return obj;
+}
+function booleanType(obj:any ):obj is BooleanType{
+    return obj;
+}
+function doubleType(obj:any ):obj is DoubleType{
+    return obj;
+}
+function textType(obj:any ):obj is TextType{
+    return obj;
+}
 
-export type {TABLE, FIELD}
+
+
+export function CURRENT_TIMESTAMP(obj:any ):obj is CURRENT_TIMESTAMP_TYPE{
+    return obj;
+}
+export function NULL(obj:any ):obj is NULL_TYPE{
+    return obj;
+}
+export function AS_DEFINED(obj:any ):obj is AS_DEFINED_TYPE{
+    return obj;
+}
+
+
+
+
+
+export { stringType, numberType, enumType, dateType, booleanType, doubleType, textType}
+export type {TABLE, FIELD  }
