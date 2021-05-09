@@ -1,4 +1,4 @@
-import { FIELD, SQL_VALUES, TABLE } from "../Iinterfaces";
+import { FIELD, FIELD_NAME_VALUE_OPERATOR, SQL_VALUES, TABLE } from "../Iinterfaces";
 import {stringType, numberType, enumType, dateType, booleanType, doubleType, textType, CURRENT_TIMESTAMP, NULL, AS_DEFINED} from "../Iinterfaces/runtime"
 import { FIELD_NAME_VALUE, SQL_MASTER } from "../Iinterfaces";
 import Delete from "./base_sql/Delete";
@@ -37,6 +37,7 @@ export default class Table implements TABLE, SQL_MASTER {
 
 
 
+
     /**
      * 
      * @param _insertFields 
@@ -60,11 +61,20 @@ export default class Table implements TABLE, SQL_MASTER {
      * 
      * @param _field 
      * @param _selectedFields 
-     * @returns 
+     * @returns sql string and value of the clause
      */
     selectById(_field: FIELD_NAME_VALUE, _selectedFields?: string[]): SQL_VALUES {
         // write validation code here
         return this.selectCls.selectById(_field, _selectedFields)
+    }
+    /**
+     * 
+     * @param _fields These th fileds in the clause , use AND | OR | NONE opertaor  NONE oprator is is to be used only at last element of array
+     * @param _selectedFields The filed o fthe table to reurned
+     * @returns sql string and values array of the clause
+     */
+    select(_fields: FIELD_NAME_VALUE_OPERATOR[], _selectedFields?: string[]): SQL_VALUES {
+        return this.selectCls.select(_fields, _selectedFields);
     }
 
     /**
