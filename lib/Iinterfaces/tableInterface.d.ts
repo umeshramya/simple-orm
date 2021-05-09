@@ -79,11 +79,17 @@ interface FIELD {
      */
     default?: CURRENT_TIMESTAMP_TYPE | NULL_TYPE | AS_DEFINED_TYPE;
     unique?: boolean;
-    preSelectHook?: (fieldValue: any, ...args: any[]) => boolean;
-    preInsertHook?: (fieldValue: any, ...args: any[]) => boolean;
-    preUpdateHook?: (fieldValue: any, ...args: any[]) => boolean;
-    validate?: Function;
+    /**
+     * false means required
+     * true means not required
+     */
     null?: boolean;
+    /**
+     * This is function is field validadtor before insert and update operations
+     * @fieldValue value is value of the current field use this inside your custom validadtion function
+     * return true if success or return false in faliure of validation
+     */
+    validate?: (fieldValue: any) => boolean;
 }
 /**
  * each field of table
@@ -93,18 +99,7 @@ interface FIELD {
 interface TABLE {
     tableName: string;
     fields: FIELD[];
-    validate: () => boolean;
 }
-declare function stringType(obj: any): obj is StringType;
-declare function numberType(obj: any): obj is NumberType;
-declare function dateType(obj: any): obj is DateType;
-declare function enumType(obj: any): obj is EnumType;
-declare function booleanType(obj: any): obj is BooleanType;
-declare function doubleType(obj: any): obj is DoubleType;
-declare function textType(obj: any): obj is TextType;
-declare function CURRENT_TIMESTAMP(obj: any): obj is CURRENT_TIMESTAMP_TYPE;
-declare function NULL(obj: any): obj is NULL_TYPE;
-declare function AS_DEFINED(obj: any): obj is AS_DEFINED_TYPE;
-export { stringType, numberType, enumType, dateType, booleanType, doubleType, textType, CURRENT_TIMESTAMP, NULL, AS_DEFINED };
 export type { TABLE, FIELD };
+export type { StringType, NumberType, EnumType, DateType, BooleanType, DoubleType, TextType, CURRENT_TIMESTAMP_TYPE, NULL_TYPE, AS_DEFINED_TYPE };
 //# sourceMappingURL=tableInterface.d.ts.map

@@ -48,6 +48,10 @@ export default class Table implements TABLE, SQL_MASTER {
      * @onUpdate "RESTRICT" |"NO ACTION" | "CASCADE" | "SET NULL" | "SET DEFAULT"
      */
     relatetable(thisTableFieldName: string, otherTable: string, otherTablefieldName: string, onDelete?: "RESTRICT" | "CASCADE", onUpdate?: "RESTRICT" | "NO ACTION" | "CASCADE" | "SET NULL" | "SET DEFAULT"): string;
-    validate(): boolean;
+    /**
+     * This function throws error in case there is falire of validation
+     * @param _sqlField this is array of field which destned to update or insert table in insert and update operations
+     */
+    private validateHandler;
 }
 //# sourceMappingURL=Table.d.ts.map

@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "validator": "^13.6.0",
     "very-simple-orm": "file:.yalc/very-simple-orm"
   }
 }

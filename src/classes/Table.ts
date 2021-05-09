@@ -1,4 +1,5 @@
-import { FIELD, SQL_VALUES, TABLE, stringType, numberType, enumType, dateType, booleanType, doubleType, textType, CURRENT_TIMESTAMP, NULL, AS_DEFINED } from "../Iinterfaces";
+import { FIELD, SQL_VALUES, TABLE } from "../Iinterfaces";
+import {stringType, numberType, enumType, dateType, booleanType, doubleType, textType, CURRENT_TIMESTAMP, NULL, AS_DEFINED} from "../Iinterfaces/runtime"
 import { FIELD_NAME_VALUE, SQL_MASTER } from "../Iinterfaces";
 import Delete from "./base_sql/Delete";
 import Insert from "./base_sql/Insert";
