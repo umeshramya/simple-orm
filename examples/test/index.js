@@ -3,8 +3,7 @@ const { Table } = require("very-simple-orm")
 let user = new Table("userTest", [
     {
         "fieldName": "id",
-        "type": ["Number", ],
-        "autoIncrement": true,
+        "type": {"Number" : "Number", "autoIncrement" : true},
         "unique": true,
         "PrimeryKey": true,
         "null": false,
@@ -12,29 +11,31 @@ let user = new Table("userTest", [
     },
     {
         "fieldName": "username",
-        "type": "String",
+        "type": {"String" : "String", "size" : 150},
         "unique": true,
         "size": 50,
         "null": false
     },
     {
         "fieldName": "password",
-        "type": "String",
+        "type": {"String" : "String", "size" : 200},
         "size": 200,
-        "unique": true,
+        "unique": false,
         "null": false,
     },
     {
         "fieldName": "gender",
-        "type": "Enum",
+        "type": {"Enum" : "Enum", "enumValues" :['Male', 'Female', 'Not Specified', 'Transgender'] },
         "null": false,
-        "values": ['Male', 'Female', 'Not Specified', 'Transgender']
+        "unique" : false,
+        "default" : {"AS_DEFINED" : "AS DEFINED", "value" : "Male"}
+
 
     },
     {
         "fieldName": "orgId",
         "null": false,
-        "type": "Number",
+        "type": {"Number" : "Number"}
 
     }
 
@@ -45,18 +46,16 @@ let user = new Table("userTest", [
 let org = new Table("orgTest", [
     {
         "fieldName": "id",
-        "type": "Number",
+        "type": {"Number" : "Number", "autoIncrement" : true},
         "PrimeryKey": true,
         "null": false,
-        "autoIncrement": true,
         "unique": true
     },
     {
         "fieldName": "orgName",
-        "type": "String",
+        "type": {"String" : "String"},
         "unique": true,
         "null": false,
-        "size": 255
 
     }
 ])
@@ -65,9 +64,7 @@ let org = new Table("orgTest", [
 
 
 
-console.log(user.fields.map(el => {
-    return el.fieldName
-}))
+
 
 
 //return the sql string and values of arguments
@@ -84,6 +81,9 @@ console.log(org.insert([
     { "fieldName": "name", "value": "JJH" }
 ]))
 console.log(user.deleteById({fieldName : "id", "value" : 1}))
+console.log(user.fields.map(el => {
+    return el.fieldName
+}))
 
 
 
