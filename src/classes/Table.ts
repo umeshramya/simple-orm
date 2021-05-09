@@ -43,6 +43,7 @@ export default class Table implements TABLE, SQL_MASTER {
      */
     insert(_insertFields: FIELD_NAME_VALUE[]): SQL_VALUES {
         // write code for valdation of fileds here 
+        this.validateHandler(_insertFields)
         return this.insertCls.insert(_insertFields)
     }
 
@@ -72,7 +73,7 @@ export default class Table implements TABLE, SQL_MASTER {
      * @returns 
      */
     updateById(_field: FIELD_NAME_VALUE, _updateFields: FIELD_NAME_VALUE[]): SQL_VALUES {
-        // write validation code here
+        this.validateHandler(_updateFields)
         return this.updateCls.updateById(_field, _updateFields);
     }
 
@@ -84,11 +85,9 @@ export default class Table implements TABLE, SQL_MASTER {
     public createTable(): string {
         let __fields: string = ""
 
-
         this.fields.forEach(curField => {
             // set name of field
             __fields = __fields + " " + curField.fieldName;
-
 
             // set type of field 
             if (stringType(curField.type)) {
@@ -196,10 +195,29 @@ export default class Table implements TABLE, SQL_MASTER {
     }
 
 
-
-    validate(): boolean {
-        return true;
+    /**
+     * This function throws error in case there is falire of validation
+     * @param _sqlField this is array of field which destned to update or insert table in insert and update operations
+     */
+    private validateHandler(_sqlField:FIELD_NAME_VALUE[]) {
+        _sqlField.forEach(inF=>{
+            let curField =    this.fields.find(f=>{
+                   if(f.fieldName == inF.fieldName){
+                      return  f
+                   }
+               })
+   
+               if(curField?.validate){
+                   let fieldCheck = curField.validate(inF.value)
+                   if(!fieldCheck){
+                       throw new Error().message=`validation failure at field ${inF.fieldName}`
+                   }
+               }
+           })
+        
     }
+
+
 
 
 }

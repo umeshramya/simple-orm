@@ -88,11 +88,17 @@ interface FIELD{
      */
     default ?: CURRENT_TIMESTAMP_TYPE | NULL_TYPE | AS_DEFINED_TYPE;
     unique ?: boolean;
-    preSelectHook ?: (fieldValue:any, ...args:any[])=>boolean;
-    preInsertHook ?: (fieldValue:any, ...args:any[])=>boolean;
-    preUpdateHook ?: (fieldValue:any, ...args:any[])=>boolean;
-    validate ?: Function;
+    /**
+     * false means required 
+     * true means not required
+     */
     null ?:boolean;
+    /**
+     * This is function is field validadtor before insert and update operations
+     * @fieldValue value is value of the current field use this inside your custom validadtion function
+     * return true if success or return false in faliure of validation
+     */
+    validate ?: (fieldValue:any)=>boolean;
 }
 
 /**
@@ -103,9 +109,10 @@ interface FIELD{
 interface TABLE{
     tableName : string;
     fields:FIELD[],
-    validate:()=>boolean
 
 }
+
+// run time custom type check fucntions
 
  function stringType(obj:any ):obj is StringType{
     return obj;
