@@ -42,7 +42,7 @@ let user = new Table("userTest", [
         "type": {"Enum" : "Enum", "enumValues" :['Male', 'Female', 'Not Specified', 'Transgender'] },
         "null": false,
         "unique" : false,
-        "default" : {"AS_DEFINED" : "AS DEFINED", "value" : "Male"}
+        "default" : {"AS_DEFINED" : "AS DEFINED", "value" : "(curdate())"}
 
 
     },

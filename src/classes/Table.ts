@@ -148,7 +148,7 @@ export default class Table implements TABLE, SQL_MASTER {
                 } else if (NULL(curField.default)) {
                     __fields = __fields + " DEFAULT NULL"
                 } else if (AS_DEFINED(curField.default)) {
-                    __fields = __fields + " DEFAULT " + curField.default.value 
+                    __fields =`${__fields}  DEFAULT ${curField.default.value.toString()}`
                 }
 
             }
