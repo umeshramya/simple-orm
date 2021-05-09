@@ -32,20 +32,18 @@ let user = new Table("userTest", [
         "fieldName": "username",
         "type": {"String" : "String", "size" : 150},
         "unique": true,
-        "size": 50,
         "null": false
+        
     },
     {
         "fieldName": "password",
         "type": {"String" : "String", "size" : 200},
-        "size": 200,
         "unique": false,
         "null": false,
     },
     {
         "fieldName": "email",
         "type": {"String" : "String", "size" : 200},
-        "size": 200,
         "unique": false,
         "null": false,
         "validate" : (value =>{
@@ -95,11 +93,6 @@ let org = new Table("orgTest", [
 
 
 
-
-
-
-
-
 //return the sql string and values of arguments
 console.log(user.createTable())
 console.log(org.createTable())
@@ -124,4 +117,3 @@ console.log(user.fields.map(el => {
 
 
 ```
-

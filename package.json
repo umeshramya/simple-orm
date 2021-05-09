@@ -1,6 +1,6 @@
 {
   "name": "very-simple-orm",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "This is simple orm for typesript/javascript projects",
   "main": "lib/index.js",
   "types": "lib",

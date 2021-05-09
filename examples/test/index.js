@@ -15,20 +15,18 @@ let user = new Table("userTest", [
         "fieldName": "username",
         "type": {"String" : "String", "size" : 150},
         "unique": true,
-        "size": 50,
         "null": false
+        
     },
     {
         "fieldName": "password",
         "type": {"String" : "String", "size" : 200},
-        "size": 200,
         "unique": false,
         "null": false,
     },
     {
         "fieldName": "email",
         "type": {"String" : "String", "size" : 200},
-        "size": 200,
         "unique": false,
         "null": false,
         "validate" : (value =>{
@@ -93,10 +91,10 @@ console.log(user.updateById({"fieldName" : "id", "value" : 1}, [
     {"fieldName" : "gender" , value : "Female"},
     {"fieldName" : "email", "value" : "umeshbilagi@gmail.com"}
 ]))
-// console.log(org.insert([
-//     { "fieldName": "id", "value": 1 },
-//     { "fieldName": "name", "value": "JJH" }
-// ]))
+console.log(org.insert([
+    { "fieldName": "id", "value": 1 },
+    { "fieldName": "name", "value": "JJH" }
+]))
 console.log(user.deleteById({fieldName : "id", "value" : 1}))
 console.log(user.fields.map(el => {
     return el.fieldName
