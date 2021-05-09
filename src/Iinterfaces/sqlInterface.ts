@@ -11,6 +11,10 @@ interface FIELD_NAME_VALUE{
     value:any
 }
 
+interface FIELD_NAME_VALUE_OPERATOR  extends FIELD_NAME_VALUE{
+    Operator : "AND" | "OR" | "NONE"
+}
+
 interface SELECT{
     selectById(_field:FIELD_NAME_VALUE, _selectedFields ?:string[]):SQL_VALUES;
 }
@@ -31,4 +35,4 @@ interface SQL_MASTER extends SELECT, UPADTE, INSERT, DELETE{
     
 }
 
-export type {SQL_VALUES, FIELD_NAME_VALUE, SELECT, UPADTE, INSERT, DELETE, SQL_MASTER}
+export type {SQL_VALUES, FIELD_NAME_VALUE, FIELD_NAME_VALUE_OPERATOR, SELECT, UPADTE, INSERT, DELETE, SQL_MASTER}
