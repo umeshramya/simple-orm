@@ -1,4 +1,4 @@
-import { FIELD_NAME_VALUE, SELECT, SQL_VALUES } from "../../Iinterfaces/index";
+import { FIELD_NAME_VALUE, FIELD_NAME_VALUE_OPERATOR, SELECT, SQL_VALUES } from "../../Iinterfaces/index";
 import Sql from "./SQL";
 export default class Select extends Sql implements SELECT {
     /**
@@ -8,5 +8,9 @@ export default class Select extends Sql implements SELECT {
      * @param _selectedFields field to returned if undefined all fields will be returned
      */
     selectById(_field: FIELD_NAME_VALUE, _selectedFields?: string[]): SQL_VALUES;
+    /**
+     * select
+     */
+    select(_fields: FIELD_NAME_VALUE_OPERATOR[], _selectedFields?: string[]): SQL_VALUES;
 }
 //# sourceMappingURL=Select.d.ts.map

@@ -1,4 +1,4 @@
-import { FIELD, FIELD_NAME_VALUE_OPERATOR, SQL_VALUES, TABLE } from "../Iinterfaces";
+import { FIELD, FIELD_NAME_VALUE_OPERATOR, SQL_VALUES, SQL_VALUES_MANY, TABLE } from "../Iinterfaces";
 import {stringType, numberType, enumType, dateType, booleanType, doubleType, textType, CURRENT_TIMESTAMP, NULL, AS_DEFINED} from "../Iinterfaces/runtime"
 import { FIELD_NAME_VALUE, SQL_MASTER } from "../Iinterfaces";
 import Delete from "./base_sql/Delete";
@@ -48,6 +48,15 @@ export default class Table implements TABLE, SQL_MASTER {
         this.validateHandler(_insertFields)
         return this.insertCls.insert(_insertFields)
     }
+    /**
+     * 
+     * @param _insertFields two dimensional array filed and values
+     * return sql string and two dimensiona array
+     */
+    insertMany(_insertFields: FIELD_NAME_VALUE[][]): SQL_VALUES_MANY {
+        return this.insertCls.insertMany(_insertFields)
+    }
+
 
     /**
      * 

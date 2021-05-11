@@ -26,9 +26,7 @@ interface FIELD_NAME_VALUE_OPERATOR  extends FIELD_NAME_VALUE{
     Operator : "AND" | "OR" | "NONE"
 }
 
-/**
- * Select class interface
- */
+
 interface SELECT{
     selectById(_field:FIELD_NAME_VALUE, _selectedFields ?:string[]):SQL_VALUES;
     select(_fields:FIELD_NAME_VALUE_OPERATOR[],  _selectedFields ?:string[]):SQL_VALUES;

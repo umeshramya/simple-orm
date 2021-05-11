@@ -82,23 +82,32 @@ let org = new Table("orgTest", [
 
 
 //return the sql string and values of arguments
-console.log(user.createTable())
-console.log(org.createTable())
-console.log(user.relatetable("orgId", "orgTest", "id", "RESTRICT", "RESTRICT"))
-console.log(user.selectById({"fieldName": "id", "value" : 1}))
-console.log(user.updateById({"fieldName" : "id", "value" : 1}, [
-    {"fieldName" : "name" , value : "han"},
-    {"fieldName" : "gender" , value : "Female"},
-    {"fieldName" : "email", "value" : "umeshbilagi@gmail.com"}
-]))
+// console.log(user.createTable())
+// console.log(org.createTable())
+// console.log(user.relatetable("orgId", "orgTest", "id", "RESTRICT", "RESTRICT"))
+// console.log(user.selectById({"fieldName": "id", "value" : 1}))
+// console.log(user.updateById({"fieldName" : "id", "value" : 1}, [
+//     {"fieldName" : "name" , value : "han"},
+//     {"fieldName" : "gender" , value : "Female"},
+//     {"fieldName" : "email", "value" : "umeshbilagi@gmail.com"}
+// ]))
 console.log(org.insert([
     { "fieldName": "id", "value": 1 },
     { "fieldName": "name", "value": "JJH" }
 ]))
-console.log(user.deleteById({fieldName : "id", "value" : 1}))
-console.log(user.fields.map(el => {
-    return el.fieldName
-}))
+
+console.log(
+    org.insertMany([
+        [{"fieldName" : "id", "value" : 1}, { "fieldName": "name", "value": "JJH" }],
+        [{"fieldName" : "id", "value" : 2}, { "fieldName": "name", "value": "TDH" }],
+        [{"fieldName" : "id", "value" : 3}, { "fieldName": "name", "value": "MH" }],
+    ])
+)
+
+// console.log(user.deleteById({fieldName : "id", "value" : 1}))
+// console.log(user.fields.map(el => {
+//     return el.fieldName
+// }))
 
 
 

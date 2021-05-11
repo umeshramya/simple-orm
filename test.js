@@ -1,10 +1,5 @@
-let obj =[
-    {fieldname : "name", value : "umesh"},
-    {fieldname : "age", value : 51},
-    {fieldname : "gender", value : "Male"},
-]
+let ar=[]
+ar.push([1, "jjh"])
+ar.push([2, "TDh"])
 
-
-obj.map(el=>{
-   
-})
+console.log(ar[1])

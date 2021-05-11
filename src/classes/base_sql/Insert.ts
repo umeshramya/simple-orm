@@ -25,22 +25,23 @@ export default class Insert extends Sql implements INSERT{
         let __sql:string="";
         let __values:any[][]=[];
         let __filedList:string[]=[]
-        let __valueList:"?"[]=[]
-
+        let __valueList:"?"[]=[];
         _insertFields.forEach((el, index)=>{
-            
-            el.forEach(item=>{
-                if(__filedList.length <= el.length){
-                    __filedList.push(item.fieldName);
-                    __valueList.push("?");
+            let __inValues:any[]=[];
+            el.forEach((item)=>{
+                if(__filedList.length < el.length){
+                    __filedList.push(item.fieldName)
+                    __valueList.push("?")
                 }
-                __values[index].push(item.value)
+                __inValues.push(item.value)
 
             })
-
+            __values.push(__inValues)
         })
+  
+
         __sql = `INSERT INTO ${this._tableName} (${__filedList.toString()}) VALUES (${__valueList.toString()})`;
-        let ret:SQL_VALUES= {"sql" : __sql , "values": __values};
+        let ret:SQL_VALUES_MANY= {"sql" : __sql , "values": __values};
         return ret;
 
 

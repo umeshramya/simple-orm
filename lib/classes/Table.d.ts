@@ -1,4 +1,4 @@
-import { FIELD, SQL_VALUES, TABLE } from "../Iinterfaces";
+import { FIELD, FIELD_NAME_VALUE_OPERATOR, SQL_VALUES, SQL_VALUES_MANY, TABLE } from "../Iinterfaces";
 import { FIELD_NAME_VALUE, SQL_MASTER } from "../Iinterfaces";
 export default class Table implements TABLE, SQL_MASTER {
     /**name of the table */
@@ -17,6 +17,12 @@ export default class Table implements TABLE, SQL_MASTER {
     insert(_insertFields: FIELD_NAME_VALUE[]): SQL_VALUES;
     /**
      *
+     * @param _insertFields two dimensional array filed and values
+     * return sql string and two dimensiona array
+     */
+    insertMany(_insertFields: FIELD_NAME_VALUE[][]): SQL_VALUES_MANY;
+    /**
+     *
      * @param _field
      * @returns
      */
@@ -25,9 +31,16 @@ export default class Table implements TABLE, SQL_MASTER {
      *
      * @param _field
      * @param _selectedFields
-     * @returns
+     * @returns sql string and value of the clause
      */
     selectById(_field: FIELD_NAME_VALUE, _selectedFields?: string[]): SQL_VALUES;
+    /**
+     *
+     * @param _fields These th fileds in the clause , use AND | OR | NONE opertaor  NONE oprator is is to be used only at last element of array
+     * @param _selectedFields The filed o fthe table to reurned
+     * @returns sql string and values array of the clause
+     */
+    select(_fields: FIELD_NAME_VALUE_OPERATOR[], _selectedFields?: string[]): SQL_VALUES;
     /**
      *
      * @param _field
