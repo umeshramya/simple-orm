@@ -33,29 +33,31 @@ export default class Select extends Sql implements SELECT{
 
         let __fieldList:string =""
 
-        _fields.forEach((field, index )=>{
-            if(index  < _fields.length-1){
-                if(field.Operator === "NONE"){
-                    throw new Error().message="NONE operator is aloowed only at the last"
-                }
-                __fieldList = `${__fieldList} ${field.fieldName} = ? ${field.Operator}, `
-            }else{
-                __fieldList = `${__fieldList} ${field.fieldName} = ?, `
-            }
+        // _fields.forEach((field, index )=>{
+        //     if(index  < _fields.length-1){
+        //         if(field.Operator === "NONE"){
+        //             throw new Error().message="NONE operator is aloowed only at the last"
+        //         }
+        //         __fieldList = `${__fieldList} ${field.fieldName} = ? ${field.Operator}, `
+        //     }else{
+        //         __fieldList = `${__fieldList} ${field.fieldName} = ?, `
+        //     }
 
-            __values.push(field.value);
+        //     __values.push(field.value);
             
-        })
+        // })
+        
+        let ClauseFieldValues = this.clauseMaker(_fields)
         
         if(_selectedFields === undefined){
-            __sql = `SELECT * FROM ${this._tableName} WhERE ${__fieldList}`;
+            __sql = `SELECT * FROM ${this._tableName} WhERE ${ClauseFieldValues.sql}`;
            
         }else{
-            __sql = `SELECT ${_selectedFields.toString()} FROM ${this._tableName} WHERE ${__fieldList} = ?`
+            __sql = `SELECT ${_selectedFields.toString()} FROM ${this._tableName} WHERE ${ClauseFieldValues.sql} = ?`
         }
 
 
-        return {"sql" : __sql, "values" : __values}
+        return {"sql" : __sql, "values" : ClauseFieldValues.values}
     }
         
 }

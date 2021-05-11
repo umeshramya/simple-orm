@@ -91,18 +91,25 @@ let org = new Table("orgTest", [
 //     {"fieldName" : "gender" , value : "Female"},
 //     {"fieldName" : "email", "value" : "umeshbilagi@gmail.com"}
 // ]))
-console.log(org.insert([
-    { "fieldName": "id", "value": 1 },
-    { "fieldName": "name", "value": "JJH" }
-]))
+// console.log(org.insert([
+//     { "fieldName": "id", "value": 1 },
+//     { "fieldName": "name", "value": "JJH" }
+// ]))
 
-console.log(
-    org.insertMany([
-        [{"fieldName" : "id", "value" : 1}, { "fieldName": "name", "value": "JJH" }],
-        [{"fieldName" : "id", "value" : 2}, { "fieldName": "name", "value": "TDH" }],
-        [{"fieldName" : "id", "value" : 3}, { "fieldName": "name", "value": "MH" }],
-    ])
-)
+// console.log(
+//     org.insertMany([
+//         [{"fieldName" : "id", "value" : 1}, { "fieldName": "name", "value": "JJH" }],
+//         [{"fieldName" : "id", "value" : 2}, { "fieldName": "name", "value": "TDH" }],
+//         [{"fieldName" : "id", "value" : 3}, { "fieldName": "name", "value": "MH" }],
+//     ])
+// )
+
+console.log(user.select([
+    {"fieldName" : "name", "value" : "umesh", "Operator" : "AND"},
+    {"fieldName" : "gender", "value" : "Male", "Operator" : "AND"},
+    {"fieldName" : "email", "value" : "umesh@gmail.com", "Operator" : "NONE"},
+    
+]))
 
 // console.log(user.deleteById({fieldName : "id", "value" : 1}))
 // console.log(user.fields.map(el => {
