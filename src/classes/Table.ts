@@ -54,6 +54,9 @@ export default class Table implements TABLE, SQL_MASTER {
      * return sql string and two dimensiona array
      */
     insertMany(_insertFields: FIELD_NAME_VALUE[][]): SQL_VALUES_MANY {
+        _insertFields.forEach(el=>{
+            this.validateHandler(el);
+        })
         return this.insertCls.insertMany(_insertFields)
     }
 
@@ -233,7 +236,7 @@ export default class Table implements TABLE, SQL_MASTER {
                if(curField?.validate){
                    let fieldCheck = curField.validate(inF.value)
                    if(!fieldCheck){
-                       throw new Error().message=`validation failure at field ${inF.fieldName}`
+                       throw new Error().message=`validation failure at field ${inF.fieldName} and for this value ${inF.value}`
                    }
                }
            })

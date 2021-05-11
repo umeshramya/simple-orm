@@ -16,4 +16,8 @@ export default class Sql{
     public set sqlAndValues(value: SQL_VALUES) {
         this._sqlAndValues = value;
     }
+
+    protected clauseMaker(){
+        // write code here
+    }
 }
