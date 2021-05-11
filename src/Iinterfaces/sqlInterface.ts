@@ -5,20 +5,30 @@ interface SQL_VALUES{
     sql:string;
     values:any[];
 }
+/** 
+ * For inserting into many records and updating many record
+ */
 interface SQL_VALUES_MANY{
     sql:string;
     values:any[][];
 }
-
+/**
+ * filed  name it value
+ */
 interface FIELD_NAME_VALUE{
     fieldName:string,
     value:any
 }
-
+/**
+ * Field name value and its operator.
+ */
 interface FIELD_NAME_VALUE_OPERATOR  extends FIELD_NAME_VALUE{
     Operator : "AND" | "OR" | "NONE"
 }
 
+/**
+ * Select class interface
+ */
 interface SELECT{
     selectById(_field:FIELD_NAME_VALUE, _selectedFields ?:string[]):SQL_VALUES;
     select(_fields:FIELD_NAME_VALUE_OPERATOR[],  _selectedFields ?:string[]):SQL_VALUES;
