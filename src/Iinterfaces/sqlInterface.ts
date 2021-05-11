@@ -5,6 +5,10 @@ interface SQL_VALUES{
     sql:string;
     values:any[];
 }
+interface SQL_VALUES_MANY{
+    sql:string;
+    values:any[][];
+}
 
 interface FIELD_NAME_VALUE{
     fieldName:string,
@@ -25,7 +29,8 @@ interface UPADTE{
 }
 
 interface INSERT{
-    insert(_insertFields:FIELD_NAME_VALUE[]):SQL_VALUES
+    insert(_insertFields:FIELD_NAME_VALUE[]):SQL_VALUES;
+    insertMany(_insertFields: FIELD_NAME_VALUE[][]): SQL_VALUES_MANY;
 }
 
 interface DELETE{
@@ -36,4 +41,4 @@ interface SQL_MASTER extends SELECT, UPADTE, INSERT, DELETE{
     
 }
 
-export type {SQL_VALUES, FIELD_NAME_VALUE, FIELD_NAME_VALUE_OPERATOR, SELECT, UPADTE, INSERT, DELETE, SQL_MASTER}
+export type {SQL_VALUES, SQL_VALUES_MANY,FIELD_NAME_VALUE, FIELD_NAME_VALUE_OPERATOR, SELECT, UPADTE, INSERT, DELETE, SQL_MASTER}
