@@ -148,6 +148,12 @@ let org = new Table("orgTest", [
 //     return el.fieldName
 // }))
 
+// console.log(user.delete([
+//     {"fieldName" : "firstName", "value" : "%um%", "operator" : "LIKE", "separator" : "AND"},
+//     {"fieldName" : "middleName", "value" : "M", "operator" : "!=", "separator" : "NONE"}
+
+// ]))
+
 
 
 

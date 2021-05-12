@@ -17,7 +17,7 @@ export default class Delete extends Sql implements DELETE{
         let __sql:string="";
         let ClauseFieldValues = this.clauseMaker(_clauseField)
 
-        __sql = `DELETE FROM ${this._tableName} WHERE ${ClauseFieldValues.sql} = ?`
+        __sql = `DELETE FROM ${this._tableName} WHERE ${ClauseFieldValues.sql}`
   
         let ret:SQL_VALUES= {"sql" : __sql , "values": ClauseFieldValues.values};
         return ret;

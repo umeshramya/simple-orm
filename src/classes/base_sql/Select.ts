@@ -39,7 +39,7 @@ export default class Select extends Sql implements SELECT{
             __sql = `SELECT * FROM ${this._tableName} WhERE ${ClauseFieldValues.sql}`;
            
         }else{
-            __sql = `SELECT ${_selectedFields.toString()} FROM ${this._tableName} WHERE ${ClauseFieldValues.sql} = ?`
+            __sql = `SELECT ${_selectedFields.toString()} FROM ${this._tableName} WHERE ${ClauseFieldValues.sql}`
         }
 
 

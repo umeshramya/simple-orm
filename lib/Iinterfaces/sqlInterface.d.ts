@@ -40,6 +40,7 @@ interface INSERT {
 }
 interface DELETE {
     deleteById(_field: FIELD_NAME_VALUE): SQL_VALUES;
+    delete(_clauseField: FIELD_NAME_VALUE_OPERATOR[]): SQL_VALUES;
 }
 interface SQL_MASTER extends SELECT, UPADTE, INSERT, DELETE {
 }
