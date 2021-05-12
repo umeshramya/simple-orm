@@ -1,4 +1,4 @@
-import { FIELD_NAME_VALUE, SQL_VALUES} from "../../Iinterfaces/index"
+import { FIELD_NAME_VALUE, SQL_VALUES, SQL_VALUES_MANY} from "../../Iinterfaces/index"
 import Sql from "./SQL";
 export default class Update extends Sql{
 
@@ -14,6 +14,18 @@ export default class Update extends Sql{
         __sql = `UPDATE ${this._tableName} SET ${__fieldStr} WHERE ${this._tableName}.${_field.fieldName} = ?`;
 
         return{ "sql" : __sql, "values" : __values};
+    }
+
+    public update(_fileds:FIELD_NAME_VALUE, _updateFields:FIELD_NAME_VALUE[][]):SQL_VALUES_MANY{
+        let __sql:string="";
+        let __values:any[][]=[];
+        let __filedList:string[]=[]
+        let __valueList:"?"[]=[];
+
+        //Write code here
+
+        let ret:SQL_VALUES_MANY= {"sql" : __sql , "values": __values};
+        return ret;
     }
 
 
