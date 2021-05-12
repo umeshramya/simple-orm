@@ -29,23 +29,9 @@ export default class Select extends Sql implements SELECT{
      */
     public select(_fields:FIELD_NAME_VALUE_OPERATOR[],  _selectedFields ?:string[]):SQL_VALUES {
         let __sql:string="";
-        let __values:any[]=[];
+        // let __values:any[]=[];
 
-        let __fieldList:string =""
-
-        // _fields.forEach((field, index )=>{
-        //     if(index  < _fields.length-1){
-        //         if(field.Operator === "NONE"){
-        //             throw new Error().message="NONE operator is aloowed only at the last"
-        //         }
-        //         __fieldList = `${__fieldList} ${field.fieldName} = ? ${field.Operator}, `
-        //     }else{
-        //         __fieldList = `${__fieldList} ${field.fieldName} = ?, `
-        //     }
-
-        //     __values.push(field.value);
-            
-        // })
+        // let __fieldList:string =""
         
         let ClauseFieldValues = this.clauseMaker(_fields)
         

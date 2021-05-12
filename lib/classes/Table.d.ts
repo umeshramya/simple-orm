@@ -49,6 +49,13 @@ export default class Table implements TABLE, SQL_MASTER {
      */
     updateById(_field: FIELD_NAME_VALUE, _updateFields: FIELD_NAME_VALUE[]): SQL_VALUES;
     /**
+     *
+     * @param _updateFields
+     * @param _clauseFileds
+     * @returns
+     */
+    update(_updateFields: FIELD_NAME_VALUE[], _clauseFileds: FIELD_NAME_VALUE_OPERATOR[]): SQL_VALUES;
+    /**
      * createTable
      */
     createTable(): string;

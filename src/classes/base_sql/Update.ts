@@ -16,19 +16,25 @@ export default class Update extends Sql{
         return{ "sql" : __sql, "values" : __values};
     }
 
-    public update(_fileds:FIELD_NAME_VALUE_OPERATOR[], _updateFields:FIELD_NAME_VALUE[][]):SQL_VALUES_MANY{
+    public update(_updateFields:FIELD_NAME_VALUE[], _clauseFileds:FIELD_NAME_VALUE_OPERATOR[] ):SQL_VALUES{
         let __sql:string="";
+        let __fieldStr:string="";
         let __values:any[][]=[];
-        let __filedList:string[]=[]
-        let __valueList:"?"[]=[];
 
-        //Write code here
 
-       let updatevalues = this.clauseMaker(_fileds)
+        _updateFields.map(el=>{
+            __fieldStr = `${__fieldStr} ${el.fieldName} = ?,`
+            __values.push(el.value);
+        })
+
+       let updatevalues = this.clauseMaker(_clauseFileds)
 
         __sql = `UPDATE ${this._tableName} SET ${__fieldStr} WHERE ${this._tableName}.${updatevalues.sql}`;
-
-        __values.push (updatevalues.values)
+        
+        updatevalues.values.forEach(el=>{
+            __values.push(el)
+        })
+        
 
         let ret:SQL_VALUES_MANY= {"sql" : __sql , "values": __values};
         return ret;

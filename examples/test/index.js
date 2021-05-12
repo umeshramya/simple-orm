@@ -85,12 +85,43 @@ let org = new Table("orgTest", [
 // console.log(user.createTable())
 // console.log(org.createTable())
 // console.log(user.relatetable("orgId", "orgTest", "id", "RESTRICT", "RESTRICT"))
+
+
+/**
+ * ===============
+ *  SELECT
+ * ===============
+ */
 // console.log(user.selectById({"fieldName": "id", "value" : 1}))
+// console.log(user.select([
+//     {"fieldName" : "name", "value" : "umesh", "operator" : "=", "separator" : "AND"},
+//     {"fieldName" : "gender", "value" : "Male", "operator" : "!=" , "separator" : "OR"},
+//     {"fieldName" : "email", "value" : "%umesh@gmail.com%", "operator" : "LIKE" , "separator" : "NONE" },
+// ]))
+
+/**
+ * =====================
+ *  UPDATE
+ * ======================
+ */
 // console.log(user.updateById({"fieldName" : "id", "value" : 1}, [
 //     {"fieldName" : "name" , value : "han"},
 //     {"fieldName" : "gender" , value : "Female"},
 //     {"fieldName" : "email", "value" : "umeshbilagi@gmail.com"}
 // ]))
+
+// console.log(user.update(
+//     [{"fieldName" : "pincode", "value" : "589057"}, {"fieldName" : "mobile", "value" : "9856789"}],
+//     [   {"fieldName" : "mobile", "value" : "", "operator" : "=", "separator" : "OR"},
+//         {"fieldName" : "pincode", "value" : "", "operator" : "=", "separator" : ""}]
+// ))
+
+
+/***
+ * ==================
+ *  INSERT
+ * ================
+ */
 // console.log(org.insert([
 //     { "fieldName": "id", "value": 1 },
 //     { "fieldName": "name", "value": "JJH" }
@@ -104,12 +135,13 @@ let org = new Table("orgTest", [
 //     ])
 // )
 
-console.log(user.select([
-    {"fieldName" : "name", "value" : "umesh", "operator" : "=", "separator" : "AND"},
-    {"fieldName" : "gender", "value" : "Male", "operator" : "!=" , "separator" : "OR"},
-    {"fieldName" : "email", "value" : "%umesh@gmail.com%", "operator" : "LIKE" , "separator" : "NONE" },
+
     
-]))
+/**
+ * ==================
+ *  DELETE
+ * ================
+ */
 
 // console.log(user.deleteById({fieldName : "id", "value" : 1}))
 // console.log(user.fields.map(el => {
