@@ -1,4 +1,4 @@
-import { FIELD_NAME_VALUE, SQL_VALUES, SQL_VALUES_MANY} from "../../Iinterfaces/index"
+import { FIELD_NAME_VALUE, FIELD_NAME_VALUE_OPERATOR, SQL_VALUES, SQL_VALUES_MANY} from "../../Iinterfaces/index"
 import Sql from "./SQL";
 export default class Update extends Sql{
 
@@ -16,13 +16,19 @@ export default class Update extends Sql{
         return{ "sql" : __sql, "values" : __values};
     }
 
-    public update(_fileds:FIELD_NAME_VALUE, _updateFields:FIELD_NAME_VALUE[][]):SQL_VALUES_MANY{
+    public update(_fileds:FIELD_NAME_VALUE_OPERATOR[], _updateFields:FIELD_NAME_VALUE[][]):SQL_VALUES_MANY{
         let __sql:string="";
         let __values:any[][]=[];
         let __filedList:string[]=[]
         let __valueList:"?"[]=[];
 
         //Write code here
+
+       let updatevalues = this.clauseMaker(_fileds)
+
+        __sql = `UPDATE ${this._tableName} SET ${__fieldStr} WHERE ${this._tableName}.${updatevalues.sql}`;
+
+        __values.push (updatevalues.values)
 
         let ret:SQL_VALUES_MANY= {"sql" : __sql , "values": __values};
         return ret;
