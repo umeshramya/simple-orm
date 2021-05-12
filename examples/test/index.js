@@ -105,9 +105,9 @@ let org = new Table("orgTest", [
 // )
 
 console.log(user.select([
-    {"fieldName" : "name", "value" : "umesh", "Operator" : "AND"},
-    {"fieldName" : "gender", "value" : "Male", "Operator" : "AND"},
-    {"fieldName" : "email", "value" : "umesh@gmail.com", "Operator" : "NONE"},
+    {"fieldName" : "name", "value" : "umesh", "operator" : "=", "separator" : "AND"},
+    {"fieldName" : "gender", "value" : "Male", "operator" : "!=" , "separator" : "OR"},
+    {"fieldName" : "email", "value" : "%umesh@gmail.com%", "operator" : "LIKE" , "separator" : "NONE" },
     
 ]))
 

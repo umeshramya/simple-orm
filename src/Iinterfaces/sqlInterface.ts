@@ -23,7 +23,8 @@ interface FIELD_NAME_VALUE{
  * Field name value and its operator.
  */
 interface FIELD_NAME_VALUE_OPERATOR  extends FIELD_NAME_VALUE{
-    Operator : "AND" | "OR" | "NONE"
+    separator : "AND" | "OR" | "NONE";
+    operator : "=" | "!=" | "LIKE"
 }
 
 

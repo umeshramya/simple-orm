@@ -23,12 +23,12 @@ export default class Sql{
         let __values:any[] =[];
         _fields.forEach((field, index )=>{
             if(index  < _fields.length-1){
-                if(field.Operator === "NONE"){
+                if(field.separator === "NONE"){
                     throw new Error().message="NONE operator is aloowed only at the last"
                 }
-                __fieldList = `${__fieldList} ${field.fieldName} = ? ${field.Operator} `
+                __fieldList = `${__fieldList} ${field.fieldName} ${field.operator} ? ${field.separator} `
             }else{
-                __fieldList = `${__fieldList} ${field.fieldName} = ? `
+                __fieldList = `${__fieldList} ${field.fieldName} ${field.operator} ? `
             }
 
             __values.push(field.value);
