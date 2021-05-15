@@ -3,14 +3,33 @@ import Sql from "./SQL";
 export default class Select extends Sql implements SELECT {
     /**
      * select the table by single filed i.e id
-     * @param _field this is  object with id field name and it value as clause
+     * @param _idField this is  object with id field name and it value as clause
      * @param _tableName name of the table
      * @param _selectedFields field to returned if undefined all fields will be returned
+     * @param _orderBy  order by columns
+     * @param _limit limit of rows
+     * @param _offset offset rows
+     * @returns return sql_values
      */
-    selectById(_field: FIELD_NAME_VALUE, _selectedFields?: string[]): SQL_VALUES;
+    selectById(_idField: FIELD_NAME_VALUE, _selectedFields?: string[], _orderBy?: {
+        fields: string[];
+        by: "ASC" | "DESC";
+    }, _limit?: number, _offset?: number): SQL_VALUES;
     /**
-     * select
+     *
+     * @param _clauseFields clauase fileds
+     * @param _selectedFields selected field to be returned
+     * @param _orderBy  order by columns
+     * @param _limit limit of rows
+     * @param _offset offset rows
+     * @returns return sql_values
      */
-    select(_fields: FIELD_NAME_VALUE_OPERATOR[], _selectedFields?: string[]): SQL_VALUES;
+    select(_clauseFields: FIELD_NAME_VALUE_OPERATOR[], _selectedFields?: string[], _orderBy?: {
+        fields: string[];
+        by: "ASC" | "DESC";
+    }, _limit?: number, _offset?: number): SQL_VALUES;
+    private orderBy;
+    private offset;
+    private limit;
 }
 //# sourceMappingURL=Select.d.ts.map

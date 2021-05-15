@@ -16,7 +16,7 @@ export default class Select extends Sql implements SELECT{
         let __sql:string="";
         let __values:any[]=[];
        
-        if(_selectedFields === undefined){
+        if(_selectedFields === undefined || _selectedFields.length < 1){
             __sql = `SELECT * FROM ${this._tableName} WhERE ${_idField["fieldName"]} = ?`;
            
         }else{
@@ -45,7 +45,7 @@ export default class Select extends Sql implements SELECT{
         
         let ClauseFieldValues = this.clauseMaker(_clauseFields)
         
-        if(_selectedFields === undefined){
+        if(_selectedFields === undefined || _selectedFields.length < 1){
             __sql = `SELECT * FROM ${this._tableName} WhERE ${ClauseFieldValues.sql}`;
            
         }else{

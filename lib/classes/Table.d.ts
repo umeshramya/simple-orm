@@ -39,14 +39,20 @@ export default class Table implements TABLE, SQL_MASTER {
      * @param _selectedFields selected filed in sql statements
      * @returns sql string and value of the clause
      */
-    selectById(_field: FIELD_NAME_VALUE, _selectedFields?: string[]): SQL_VALUES;
+    selectById(_idField: FIELD_NAME_VALUE, _selectedFields?: string[], _orderBy?: {
+        fields: string[];
+        by: "ASC" | "DESC";
+    }, _limit?: number, _offset?: number): SQL_VALUES;
     /**
      *
      * @param _fields These th fileds in the clause , use AND | OR | NONE opertaor  NONE oprator is is to be used only at last element of array
      * @param _selectedFields The filed o fthe table to reurned
      * @returns sql string and values array of the clause
      */
-    select(_fields: FIELD_NAME_VALUE_OPERATOR[], _selectedFields?: string[]): SQL_VALUES;
+    select(_clauseFields: FIELD_NAME_VALUE_OPERATOR[], _selectedFields?: string[], _orderBy?: {
+        fields: string[];
+        by: "ASC" | "DESC";
+    }, _limit?: number, _offset?: number): SQL_VALUES;
     /**
      *
      * @param _field id file dof table

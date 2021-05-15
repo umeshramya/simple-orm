@@ -27,8 +27,14 @@ interface FIELD_NAME_VALUE_OPERATOR extends FIELD_NAME_VALUE {
     operator: "=" | "!=" | "LIKE";
 }
 interface SELECT {
-    selectById(_field: FIELD_NAME_VALUE, _selectedFields?: string[]): SQL_VALUES;
-    select(_fields: FIELD_NAME_VALUE_OPERATOR[], _selectedFields?: string[]): SQL_VALUES;
+    selectById(_idField: FIELD_NAME_VALUE, _selectedFields?: string[], _orderBy?: {
+        fields: string[];
+        by: "ASC" | "DESC";
+    }, _limit?: number, _offset?: number): SQL_VALUES;
+    select(_clauseFields: FIELD_NAME_VALUE_OPERATOR[], _selectedFields?: string[], _orderBy?: {
+        fields: string[];
+        by: "ASC" | "DESC";
+    }, _limit?: number, _offset?: number): SQL_VALUES;
 }
 interface UPADTE {
     updateById(_field: FIELD_NAME_VALUE, _updateFields: FIELD_NAME_VALUE[]): SQL_VALUES;

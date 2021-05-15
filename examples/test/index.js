@@ -92,12 +92,12 @@ let org = new Table("orgTest", [
  *  SELECT
  * ===============
  */
-// console.log(user.selectById({"fieldName": "id", "value" : 1}))
+// console.log(user.selectById({"fieldName": "id", "value" : 1},["id", "email", "username"], {"fields" : ["id", "email"], "by" : "DESC"}))
 // console.log(user.select([
 //     {"fieldName" : "name", "value" : "umesh", "operator" : "=", "separator" : "AND"},
 //     {"fieldName" : "gender", "value" : "Male", "operator" : "!=" , "separator" : "OR"},
 //     {"fieldName" : "email", "value" : "%umesh@gmail.com%", "operator" : "LIKE" , "separator" : "NONE" },
-// ]))
+// ], [], {}, 100, 50))
 
 /**
  * =====================
