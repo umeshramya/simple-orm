@@ -55,15 +55,19 @@ export default class Select extends Sql implements SELECT{
     }
 
 
-    private sort(field:string, by:"ASC" | "DSC"):string {
+    private sort(fields:string[], by:"ASC" | "DESC"):string {
         //write code for sort statement
-        let ret:string=""
+        let ret:string= ` ORDER BY ${fields.toString()} ${by}`
         return ret
     }
     
-    private offsetAndLimit(offset:number, limit:number):string {
-        //write code offset and limit stattment
-        let ret:string=""
+    private offset(_offset:number):string {
+          let ret:string= _offset > 0 ? ` OFFSET ${_offset}` : ""
         return ret
     }
+
+    private limit(_limit:number):string {
+        let ret:string= _limit > 0 ? ` LIMIT ${_limit}` : ""
+        return ret
+  }
 }
