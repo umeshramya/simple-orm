@@ -7,9 +7,12 @@ export default class Update extends Sql{
         let __fieldStr:string="";
         let __values:any[]=[];
         _updateFields.map(el=>{
-            __fieldStr = `${__fieldStr} ${el.fieldName} = ?,`
+            __fieldStr = `${__fieldStr} ${el.fieldName} = ?, `
             __values.push(el.value);
         })
+
+        __fieldStr = __fieldStr.substring(0, __fieldStr.length -2)
+    
         __values.push(_field.value);
         __sql = `UPDATE ${this._tableName} SET ${__fieldStr} WHERE ${this._tableName}.${_field.fieldName} = ?`;
 
@@ -23,10 +26,11 @@ export default class Update extends Sql{
 
 
         _updateFields.map(el=>{
-            __fieldStr = `${__fieldStr} ${el.fieldName} = ?,`
+            __fieldStr = `${__fieldStr} ${el.fieldName} = ?, `
             __values.push(el.value);
         })
 
+        __fieldStr = __fieldStr.substring(0, __fieldStr.length -2)
        let updatevalues = this.clauseMaker(_clauseFileds)
 
         __sql = `UPDATE ${this._tableName} SET ${__fieldStr} WHERE ${this._tableName}.${updatevalues.sql}`;
