@@ -33,19 +33,7 @@ export default class Select extends Sql implements SELECT{
 
         let __fieldList:string =""
 
-        // _fields.forEach((field, index )=>{
-        //     if(index  < _fields.length-1){
-        //         if(field.Operator === "NONE"){
-        //             throw new Error().message="NONE operator is aloowed only at the last"
-        //         }
-        //         __fieldList = `${__fieldList} ${field.fieldName} = ? ${field.Operator}, `
-        //     }else{
-        //         __fieldList = `${__fieldList} ${field.fieldName} = ?, `
-        //     }
 
-        //     __values.push(field.value);
-            
-        // })
         
         let ClauseFieldValues = this.clauseMaker(_fields)
         
@@ -59,5 +47,17 @@ export default class Select extends Sql implements SELECT{
 
         return {"sql" : __sql, "values" : ClauseFieldValues.values}
     }
-        
+
+
+    private sort(field:string, by:"ASC" | "DSC"):string {
+        //write code for sort statement
+        let ret:string=""
+        return ret
+    }
+    
+    private offsetAndLimit(offset:number, limit:number):string {
+        //write code offset and limit stattment
+        let ret:string=""
+        return ret
+    }
 }
