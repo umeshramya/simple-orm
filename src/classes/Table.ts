@@ -38,6 +38,7 @@ export default class Table implements TABLE, SQL_MASTER {
 
 
 
+
     /**
      * 
      * @param _insertFields 
@@ -69,10 +70,21 @@ export default class Table implements TABLE, SQL_MASTER {
     deleteById(_field: FIELD_NAME_VALUE): SQL_VALUES {
         return this.deleteCls.deleteById(_field)
     }
+
     /**
      * 
-     * @param _field 
-     * @param _selectedFields 
+     * @param _clauseField where clase uarguments
+     * @returns SQL and values
+     */
+    delete(_clauseField: FIELD_NAME_VALUE_OPERATOR[]): SQL_VALUES {
+       return this.deleteCls.delete(_clauseField);
+    }
+
+
+    /**
+     * 
+     * @param _field id field
+     * @param _selectedFields selected filed in sql statements
      * @returns sql string and value of the clause
      */
     selectById(_field: FIELD_NAME_VALUE, _selectedFields?: string[]): SQL_VALUES {
@@ -91,14 +103,26 @@ export default class Table implements TABLE, SQL_MASTER {
 
     /**
      * 
-     * @param _field 
-     * @param _updateFields 
-     * @returns 
+     * @param _field id file dof table
+     * @param _updateFields update fileds
+     * @returns sql string and values array of the clause
      */
     updateById(_field: FIELD_NAME_VALUE, _updateFields: FIELD_NAME_VALUE[]): SQL_VALUES {
         this.validateHandler(_updateFields)
         return this.updateCls.updateById(_field, _updateFields);
     }
+
+    /**
+     * 
+     * @param _updateFields update fileds
+     * @param _clauseFileds clause fileds
+     * @returns  sql string and values
+     */
+    update(_updateFields:FIELD_NAME_VALUE[], _clauseFileds:FIELD_NAME_VALUE_OPERATOR[] ):SQL_VALUES {
+        this.validateHandler(_updateFields)
+        return   this.updateCls.update(_updateFields, _clauseFileds);
+    }
+
 
 
 

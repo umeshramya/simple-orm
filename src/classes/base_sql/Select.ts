@@ -29,11 +29,17 @@ export default class Select extends Sql implements SELECT{
      */
     public select(_fields:FIELD_NAME_VALUE_OPERATOR[],  _selectedFields ?:string[]):SQL_VALUES {
         let __sql:string="";
+<<<<<<< HEAD
         let __values:any[]=[];
 
         let __fieldList:string =""
 
 
+=======
+        // let __values:any[]=[];
+
+        // let __fieldList:string =""
+>>>>>>> 816f768a5cb722603fbb9b0bdda4d416c95883e8
         
         let ClauseFieldValues = this.clauseMaker(_fields)
         
@@ -41,7 +47,7 @@ export default class Select extends Sql implements SELECT{
             __sql = `SELECT * FROM ${this._tableName} WhERE ${ClauseFieldValues.sql}`;
            
         }else{
-            __sql = `SELECT ${_selectedFields.toString()} FROM ${this._tableName} WHERE ${ClauseFieldValues.sql} = ?`
+            __sql = `SELECT ${_selectedFields.toString()} FROM ${this._tableName} WHERE ${ClauseFieldValues.sql}`
         }
 
 

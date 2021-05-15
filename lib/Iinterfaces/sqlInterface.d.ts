@@ -32,6 +32,7 @@ interface SELECT {
 }
 interface UPADTE {
     updateById(_field: FIELD_NAME_VALUE, _updateFields: FIELD_NAME_VALUE[]): SQL_VALUES;
+    update(_updateFields: FIELD_NAME_VALUE[], _clauseFileds: FIELD_NAME_VALUE_OPERATOR[]): SQL_VALUES;
 }
 interface INSERT {
     insert(_insertFields: FIELD_NAME_VALUE[]): SQL_VALUES;
@@ -39,6 +40,7 @@ interface INSERT {
 }
 interface DELETE {
     deleteById(_field: FIELD_NAME_VALUE): SQL_VALUES;
+    delete(_clauseField: FIELD_NAME_VALUE_OPERATOR[]): SQL_VALUES;
 }
 interface SQL_MASTER extends SELECT, UPADTE, INSERT, DELETE {
 }
