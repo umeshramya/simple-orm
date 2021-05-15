@@ -35,9 +35,12 @@ export default class Table implements TABLE, SQL_MASTER {
     delete(_clauseField: FIELD_NAME_VALUE_OPERATOR[]): SQL_VALUES;
     /**
      *
-     * @param _field id field
-     * @param _selectedFields selected filed in sql statements
-     * @returns sql string and value of the clause
+     * @param _idField id field
+     * @param _selectedFields The field o fthe table to reurned
+     * @param _orderBy by filed either ASC | DESC
+     * @param _limit number of rows limited
+     * @param _offset number of rows to be offset
+     * @returns sql string and values array of the clause
      */
     selectById(_idField: FIELD_NAME_VALUE, _selectedFields?: string[], _orderBy?: {
         fields: string[];
@@ -45,8 +48,11 @@ export default class Table implements TABLE, SQL_MASTER {
     }, _limit?: number, _offset?: number): SQL_VALUES;
     /**
      *
-     * @param _fields These th fileds in the clause , use AND | OR | NONE opertaor  NONE oprator is is to be used only at last element of array
-     * @param _selectedFields The filed o fthe table to reurned
+    * @param _clauseFields These th fileds in the clause , use AND | OR | NONE opertaor  NONE oprator is is to be used only at last element of array
+     * @param _selectedFields The field o fthe table to reurned
+     * @param _orderBy by filed either ASC | DESC
+     * @param _limit number of rows limited
+     * @param _offset number of rows to be offset
      * @returns sql string and values array of the clause
      */
     select(_clauseFields: FIELD_NAME_VALUE_OPERATOR[], _selectedFields?: string[], _orderBy?: {
