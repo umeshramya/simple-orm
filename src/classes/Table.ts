@@ -87,9 +87,13 @@ export default class Table implements TABLE, SQL_MASTER {
      * @param _selectedFields selected filed in sql statements
      * @returns sql string and value of the clause
      */
-    selectById(_field: FIELD_NAME_VALUE, _selectedFields?: string[]): SQL_VALUES {
+     selectById(_idField:FIELD_NAME_VALUE, _selectedFields ?:string[], _orderBy?:{fields:string[], by:"ASC" | "DESC"}, _limit?:number, _offset?:number):SQL_VALUES {
         // write validation code here
-        return this.selectCls.selectById(_field, _selectedFields)
+
+        return this.selectCls.selectById(_idField, _selectedFields, {
+            "fields" : _orderBy?.fields ? _orderBy.fields : [],
+            "by"     : _orderBy?.by     ? _orderBy.by   : "ASC"
+        }, _limit ? _limit : 0, _offset ? _offset : 0)
     }
     /**
      * 
@@ -97,8 +101,11 @@ export default class Table implements TABLE, SQL_MASTER {
      * @param _selectedFields The filed o fthe table to reurned
      * @returns sql string and values array of the clause
      */
-    select(_fields: FIELD_NAME_VALUE_OPERATOR[], _selectedFields?: string[]): SQL_VALUES {
-        return this.selectCls.select(_fields, _selectedFields);
+     select(_clauseFields:FIELD_NAME_VALUE_OPERATOR[],  _selectedFields ?:string[], _orderBy?:{fields:string[], by:"ASC" | "DESC"}, _limit?:number, _offset?:number):SQL_VALUES  {
+        return this.selectCls.select(_clauseFields, _selectedFields, {
+            "fields" : _orderBy?.fields ? _orderBy.fields : [],
+            "by"     : _orderBy?.by     ? _orderBy.by   : "ASC"
+        }, _limit ? _limit : 0, _offset ? _offset : 0);
     }
 
     /**
