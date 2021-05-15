@@ -104,17 +104,17 @@ let org = new Table("orgTest", [
  *  UPDATE
  * ======================
  */
-// console.log(user.updateById({"fieldName" : "id", "value" : 1}, [
-//     {"fieldName" : "name" , value : "han"},
-//     {"fieldName" : "gender" , value : "Female"},
-//     {"fieldName" : "email", "value" : "umeshbilagi@gmail.com"}
-// ]))
+console.log(user.updateById({"fieldName" : "id", "value" : 1}, [
+    {"fieldName" : "name" , value : "han"},
+    {"fieldName" : "gender" , value : "Female"},
+    {"fieldName" : "email", "value" : "umeshbilagi@gmail.com"}
+]))
 
-// console.log(user.update(
-//     [{"fieldName" : "pincode", "value" : "589057"}, {"fieldName" : "mobile", "value" : "9856789"}],
-//     [   {"fieldName" : "mobile", "value" : "", "operator" : "=", "separator" : "OR"},
-//         {"fieldName" : "pincode", "value" : "", "operator" : "=", "separator" : ""}]
-// ))
+console.log(user.update(
+    [{"fieldName" : "pincode", "value" : "589057"}, {"fieldName" : "mobile", "value" : "9856789"}],
+    [   {"fieldName" : "mobile", "value" : "", "operator" : "=", "separator" : "OR"},
+        {"fieldName" : "pincode", "value" : "", "operator" : "=", "separator" : ""}]
+))
 
 
 /***
