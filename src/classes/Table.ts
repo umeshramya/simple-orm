@@ -254,7 +254,8 @@ export default class Table implements TABLE, SQL_MASTER {
      * @onUpdate "RESTRICT" |"NO ACTION" | "CASCADE" | "SET NULL" | "SET DEFAULT"
      */
     public relatetable(thisTableFieldName: string, otherTable: string, otherTablefieldName: string, onDelete: "RESTRICT" | "CASCADE" = "RESTRICT", onUpdate: "RESTRICT" | "NO ACTION" | "CASCADE" | "SET NULL" | "SET DEFAULT" = "RESTRICT"): string {
-        let __sql = `ALTER TABLE ${this.tableName} ADD KEY ${otherTable}_${this.tableName} (${thisTableFieldName}); ALTER TABLE ${this.tableName} ADD CONSTRAINT ${otherTable}_${this.tableName} FOREIGN KEY (${thisTableFieldName}) REFERENCES ${otherTable} (${otherTablefieldName}) ON DELETE ${onDelete} ON UPDATE ${onUpdate}`;
+
+        let __sql = `ALTER TABLE ${this.tableName} ADD CONSTRAINT ${otherTable}_${this.tableName} FOREIGN KEY (${thisTableFieldName}) REFERENCES ${otherTable} (${otherTablefieldName}) ON DELETE ${onDelete} ON UPDATE ${onUpdate}`;
 
         return __sql.trim() + ";"
     }
