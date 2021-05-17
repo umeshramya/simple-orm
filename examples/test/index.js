@@ -84,7 +84,7 @@ let org = new Table("orgTest", [
 //return the sql string and values of arguments
 // console.log(user.createTable())
 // console.log(org.createTable())
-// console.log(user.relatetable("orgId", "orgTest", "id", "RESTRICT", "RESTRICT"))
+console.log(user.relatetable("orgId", "orgTest", "id", "RESTRICT", "RESTRICT"))
 
 
 /**
