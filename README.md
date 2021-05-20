@@ -114,7 +114,13 @@ let org = new Table("orgTest", [
 //     {"fieldName" : "name", "value" : "umesh", "operator" : "=", "separator" : "AND"},
 //     {"fieldName" : "gender", "value" : "Male", "operator" : "!=" , "separator" : "OR"},
 //     {"fieldName" : "email", "value" : "%umesh@gmail.com%", "operator" : "LIKE" , "separator" : "NONE" },
-// ], [], {}, 100, 50))
+// ],["id", "name", "gender"], {}, 100, 50,{
+//     "type" : "INNER JOIN",
+//     "otherTable" : "orgnization",
+//     "otherTableSelectField" : ["organization_name", "address"],
+//     "otherTableJoinField" : "id",
+//     "thistableJoinField" : "organizationId"
+// }))
 
 /**
  * =====================
