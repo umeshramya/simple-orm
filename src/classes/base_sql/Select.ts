@@ -1,4 +1,4 @@
-import {FIELD_NAME_VALUE, FIELD_NAME_VALUE_OPERATOR,SELECT, SQL_VALUES} from "../../Iinterfaces/index"
+import {FIELD_NAME_VALUE, FIELD_NAME_VALUE_OPERATOR,SELECT, JOIN,SQL_VALUES} from "../../Iinterfaces/index"
 import Sql from "./SQL";
 
 export default class Select extends Sql implements SELECT{
@@ -41,12 +41,7 @@ export default class Select extends Sql implements SELECT{
      */
     public select(_clauseFields?:FIELD_NAME_VALUE_OPERATOR[],  _selectedFields ?:string[], 
         _orderBy?:{fields:string[], by:"ASC" | "DESC"}, _limit?:number, _offset?:number,
-        _join ?: {
-            type : "INNER JOIN" | "LEFT JOIN" | "RIGHT JOIN" | "CROSS JOIN",
-            otherTable:string,
-            otherTableJoinField:string,
-            thistableJoinField:string
-        }
+        _join ?:JOIN
         
         ):SQL_VALUES {
         let __sql:string="";
@@ -59,27 +54,37 @@ export default class Select extends Sql implements SELECT{
            
         }else{
             let _selectedFieldWithTable = _selectedFields.map(el=>`${this._tableName}.${el}`);
+            if(_join !== undefined){
+                if(_join.otherTableSelectField !== undefined){
+                    _join.otherTableSelectField.forEach(el=>{
+                        _selectedFieldWithTable.push(`${_join.otherTable}.${el}`);
+                    })
+                }
+            }
             __sql = `SELECT ${_selectedFieldWithTable.toString()} FROM ${this._tableName} `
         }
 
 
         if(_join !== undefined){
-            let join = ` INNER JOIN ${_join.otherTable}} ON ${_join.otherTable}.${_join.otherTableJoinField} = ${this._tableName}.${_join.thistableJoinField}`;
+            let join = ` INNER JOIN ${_join.otherTable} ON ${_join.otherTable}.${_join.otherTableJoinField} = ${this._tableName}.${_join.thistableJoinField}`;
             __sql = `${__sql} ${join}`
 
         }
         
 
         //write code of clause
-        let ClauseFieldValues!:SQL_VALUES;
+        let ClauseFieldValues!:any;
         if(_clauseFields !== undefined){
-            let ClauseFieldValues  = this.clauseMaker(_clauseFields)
+            
+            ClauseFieldValues  = this.clauseMaker(_clauseFields)
+            
             __sql = ` ${__sql} WHERE ${ClauseFieldValues.sql}`
         }else{
             ClauseFieldValues.values = [];
         }
 
         __sql =  `${__sql}${this.orderBy(_orderBy?.fields, _orderBy?.by)}${this.limit(_limit)}${this.offset(_offset)}`
+
 
         return {"sql" : __sql, "values" : ClauseFieldValues.values}
     }

@@ -1,4 +1,4 @@
-import { FIELD_NAME_VALUE, FIELD_NAME_VALUE_OPERATOR, SELECT, SQL_VALUES } from "../../Iinterfaces/index";
+import { FIELD_NAME_VALUE, FIELD_NAME_VALUE_OPERATOR, SELECT, JOIN, SQL_VALUES } from "../../Iinterfaces/index";
 import Sql from "./SQL";
 export default class Select extends Sql implements SELECT {
     /**
@@ -18,16 +18,16 @@ export default class Select extends Sql implements SELECT {
     /**
      *
      * @param _clauseFields clauase fileds
-     * @param _selectedFields selected field to be returned
+     * @param _selectedFields selected field of the current table
      * @param _orderBy  order by columns
      * @param _limit limit of rows
      * @param _offset offset rows
      * @returns return sql_values
      */
-    select(_clauseFields: FIELD_NAME_VALUE_OPERATOR[], _selectedFields?: string[], _orderBy?: {
+    select(_clauseFields?: FIELD_NAME_VALUE_OPERATOR[], _selectedFields?: string[], _orderBy?: {
         fields: string[];
         by: "ASC" | "DESC";
-    }, _limit?: number, _offset?: number): SQL_VALUES;
+    }, _limit?: number, _offset?: number, _join?: JOIN): SQL_VALUES;
     private orderBy;
     private offset;
     private limit;

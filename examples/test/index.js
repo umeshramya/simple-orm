@@ -84,7 +84,7 @@ let org = new Table("orgTest", [
 //return the sql string and values of arguments
 // console.log(user.createTable())
 // console.log(org.createTable())
-console.log(user.relatetable("orgId", "orgTest", "id", "RESTRICT", "RESTRICT"))
+// console.log(user.relatetable("orgId", "orgTest", "id", "RESTRICT", "RESTRICT"))
 
 
 /**
@@ -93,28 +93,34 @@ console.log(user.relatetable("orgId", "orgTest", "id", "RESTRICT", "RESTRICT"))
  * ===============
  */
 // console.log(user.selectById({"fieldName": "id", "value" : 1},["id", "email", "username"], {"fields" : ["id", "email"], "by" : "DESC"}))
-// console.log(user.select([
-//     {"fieldName" : "name", "value" : "umesh", "operator" : "=", "separator" : "AND"},
-//     {"fieldName" : "gender", "value" : "Male", "operator" : "!=" , "separator" : "OR"},
-//     {"fieldName" : "email", "value" : "%umesh@gmail.com%", "operator" : "LIKE" , "separator" : "NONE" },
-// ], [], {}, 100, 50))
+console.log(user.select([
+    {"fieldName" : "name", "value" : "umesh", "operator" : "=", "separator" : "AND"},
+    {"fieldName" : "gender", "value" : "Male", "operator" : "!=" , "separator" : "OR"},
+    {"fieldName" : "email", "value" : "%umesh@gmail.com%", "operator" : "LIKE" , "separator" : "NONE" },
+],["id", "name", "gender"], {}, 100, 50,{
+    "type" : "INNER JOIN",
+    "otherTable" : "orgnization",
+    "otherTableSelectField" : ["organization_name", "address"],
+    "otherTableJoinField" : "id",
+    "thistableJoinField" : "organizationId"
+}))
 
 /**
  * =====================
  *  UPDATE
  * ======================
  */
-console.log(user.updateById({"fieldName" : "id", "value" : 1}, [
-    {"fieldName" : "name" , value : "han"},
-    {"fieldName" : "gender" , value : "Female"},
-    {"fieldName" : "email", "value" : "umeshbilagi@gmail.com"}
-]))
+// console.log(user.updateById({"fieldName" : "id", "value" : 1}, [
+//     {"fieldName" : "name" , value : "han"},
+//     {"fieldName" : "gender" , value : "Female"},
+//     {"fieldName" : "email", "value" : "umeshbilagi@gmail.com"}
+// ]))
 
-console.log(user.update(
-    [{"fieldName" : "pincode", "value" : "589057"}, {"fieldName" : "mobile", "value" : "9856789"}],
-    [   {"fieldName" : "mobile", "value" : "", "operator" : "=", "separator" : "OR"},
-        {"fieldName" : "pincode", "value" : "", "operator" : "=", "separator" : ""}]
-))
+// console.log(user.update(
+//     [{"fieldName" : "pincode", "value" : "589057"}, {"fieldName" : "mobile", "value" : "9856789"}],
+//     [   {"fieldName" : "mobile", "value" : "", "operator" : "=", "separator" : "OR"},
+//         {"fieldName" : "pincode", "value" : "", "operator" : "=", "separator" : ""}]
+// ))
 
 
 /***

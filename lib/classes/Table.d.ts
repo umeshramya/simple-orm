@@ -1,4 +1,4 @@
-import { FIELD, FIELD_NAME_VALUE_OPERATOR, SQL_VALUES, SQL_VALUES_MANY, TABLE } from "../Iinterfaces";
+import { FIELD, FIELD_NAME_VALUE_OPERATOR, JOIN, SQL_VALUES, SQL_VALUES_MANY, TABLE } from "../Iinterfaces";
 import { FIELD_NAME_VALUE, SQL_MASTER } from "../Iinterfaces";
 export default class Table implements TABLE, SQL_MASTER {
     /**name of the table */
@@ -55,10 +55,10 @@ export default class Table implements TABLE, SQL_MASTER {
      * @param _offset number of rows to be offset
      * @returns sql string and values array of the clause
      */
-    select(_clauseFields: FIELD_NAME_VALUE_OPERATOR[], _selectedFields?: string[], _orderBy?: {
+    select(_clauseFields?: FIELD_NAME_VALUE_OPERATOR[], _selectedFields?: string[], _orderBy?: {
         fields: string[];
         by: "ASC" | "DESC";
-    }, _limit?: number, _offset?: number): SQL_VALUES;
+    }, _limit?: number, _offset?: number, _join?: JOIN): SQL_VALUES;
     /**
      *
      * @param _field id file dof table
