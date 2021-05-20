@@ -33,23 +33,50 @@ export default class Select extends Sql implements SELECT{
     /**
      * 
      * @param _clauseFields clauase fileds
-     * @param _selectedFields selected field to be returned
+     * @param _selectedFields selected field of the current table
      * @param _orderBy  order by columns
      * @param _limit limit of rows 
      * @param _offset offset rows
      * @returns return sql_values
      */
-    public select(_clauseFields:FIELD_NAME_VALUE_OPERATOR[],  _selectedFields ?:string[], _orderBy?:{fields:string[], by:"ASC" | "DESC"}, _limit?:number, _offset?:number):SQL_VALUES {
+    public select(_clauseFields?:FIELD_NAME_VALUE_OPERATOR[],  _selectedFields ?:string[], 
+        _orderBy?:{fields:string[], by:"ASC" | "DESC"}, _limit?:number, _offset?:number,
+        _join ?: {
+            type : "INNER JOIN" | "LEFT JOIN" | "RIGHT JOIN" | "CROSS JOIN",
+            otherTable:string,
+            otherTableJoinField:string,
+            thistableJoinField:string
+        }
+        
+        ):SQL_VALUES {
         let __sql:string="";
 
         
-        let ClauseFieldValues = this.clauseMaker(_clauseFields)
         
+        // create selected field list
         if(_selectedFields === undefined || _selectedFields.length < 1){
-            __sql = `SELECT * FROM ${this._tableName} WhERE ${ClauseFieldValues.sql}`;
+            __sql = `SELECT * FROM ${this._tableName}`;
            
         }else{
-            __sql = `SELECT ${_selectedFields.toString()} FROM ${this._tableName} WHERE ${ClauseFieldValues.sql}`
+            let _selectedFieldWithTable = _selectedFields.map(el=>`${this._tableName}.${el}`);
+            __sql = `SELECT ${_selectedFieldWithTable.toString()} FROM ${this._tableName} `
+        }
+
+
+        if(_join !== undefined){
+            let join = ` INNER JOIN ${_join.otherTable}} ON ${_join.otherTable}.${_join.otherTableJoinField} = ${this._tableName}.${_join.thistableJoinField}`;
+            __sql = `${__sql} ${join}`
+
+        }
+        
+
+        //write code of clause
+        let ClauseFieldValues!:SQL_VALUES;
+        if(_clauseFields !== undefined){
+            let ClauseFieldValues  = this.clauseMaker(_clauseFields)
+            __sql = ` ${__sql} WHERE ${ClauseFieldValues.sql}`
+        }else{
+            ClauseFieldValues.values = [];
         }
 
         __sql =  `${__sql}${this.orderBy(_orderBy?.fields, _orderBy?.by)}${this.limit(_limit)}${this.offset(_offset)}`
@@ -68,6 +95,8 @@ export default class Select extends Sql implements SELECT{
           let ret:string= _offset > 0 ? ` OFFSET ${_offset}` : ""
         return ret
     }
+
+
 
     private limit(_limit:number=0):string {
         let ret:string= _limit > 0 ? ` LIMIT ${_limit}` : ""

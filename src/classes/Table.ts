@@ -109,11 +109,21 @@ export default class Table implements TABLE, SQL_MASTER {
      * @param _offset number of rows to be offset
      * @returns sql string and values array of the clause
      */
-    select(_clauseFields:FIELD_NAME_VALUE_OPERATOR[],  _selectedFields ?:string[], _orderBy?:{fields:string[], by:"ASC" | "DESC"}, _limit?:number, _offset?:number):SQL_VALUES  {
+    select(_clauseFields?:FIELD_NAME_VALUE_OPERATOR[],  _selectedFields ?:string[], _orderBy?:{fields:string[], by:"ASC" | "DESC"}, _limit?:number, _offset?:number,
+    _join ?: {
+        type : "INNER JOIN" | "LEFT JOIN" | "RIGHT JOIN" | "CROSS JOIN",
+        otherTable:string,
+        otherTableJoinField:string,
+        thistableJoinField:string
+    }
+    
+    ):SQL_VALUES  {
         return this.selectCls.select(_clauseFields, _selectedFields, {
             "fields" : _orderBy?.fields ? _orderBy.fields : [],
             "by"     : _orderBy?.by     ? _orderBy.by   : "ASC"
-        }, _limit ? _limit : 0, _offset ? _offset : 0);
+        }, _limit ? _limit : 0, _offset ? _offset : 0,
+        _join
+        );
     }
 
     /**
