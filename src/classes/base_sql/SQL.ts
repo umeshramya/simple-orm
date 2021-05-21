@@ -26,9 +26,9 @@ export default class Sql{
                 if(field.separator === "NONE"){
                     throw new Error().message="NONE operator is aloowed only at the last"
                 }
-                __fieldList = `${__fieldList} ${field.fieldName} ${field.operator} ? ${field.separator} `
+                __fieldList = `${__fieldList} ${this._tableName}.${field.fieldName} ${field.operator} ? ${field.separator} `
             }else{
-                __fieldList = `${__fieldList} ${field.fieldName} ${field.operator} ? `
+                __fieldList = `${__fieldList} ${this._tableName}.${field.fieldName} ${field.operator} ? `
             }
 
             __values.push(field.value);
