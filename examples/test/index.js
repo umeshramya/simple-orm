@@ -161,5 +161,8 @@ console.log(user.select([
 // ]))
 
 
+console.log(user.getConstraint("user_org"))
+
+
 
 

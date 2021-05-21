@@ -171,6 +171,14 @@ let org = new Table("orgTest", [
 
 // ]))
 
+/**
+ * ==========================
+ * CONTRAINT STATEMENT GET
+ * ===========================
+ * 
+
+// console.log(user.getConstraint("user_org"))
+
 
 
 

@@ -266,6 +266,20 @@ export default class Table implements TABLE, SQL_MASTER {
 
 
     /**
+     * This method retruns the contraint selct statement
+     * @param constraint name of constraint
+     * @returns reqturns sql_vales
+     */
+    public getConstraint(constraint:string):SQL_VALUES {
+        let sql = `SELECT CONSTRAINT_NAME FROM information_schema.REFERENTIAL_CONSTRAINTS WHERE CONSTRAINT_NAME = ?`;
+        return{
+            "sql" :sql, "values" : [constraint]
+        }
+        
+    }
+
+
+    /**
      * This function throws error in case there is falire of validation
      * @param _sqlField this is array of field which destned to update or insert table in insert and update operations
      */

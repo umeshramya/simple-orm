@@ -87,6 +87,12 @@ export default class Table implements TABLE, SQL_MASTER {
      */
     relatetable(thisTableFieldName: string, otherTable: string, otherTablefieldName: string, onDelete?: "RESTRICT" | "CASCADE", onUpdate?: "RESTRICT" | "NO ACTION" | "CASCADE" | "SET NULL" | "SET DEFAULT"): string;
     /**
+     * This method retruns the contraint selct statement
+     * @param constraint name of constraint
+     * @returns reqturns sql_vales
+     */
+    getConstraint(constraint: string): SQL_VALUES;
+    /**
      * This function throws error in case there is falire of validation
      * @param _sqlField this is array of field which destned to update or insert table in insert and update operations
      */
