@@ -21,6 +21,7 @@ export default class Sql{
     protected clauseMaker(_fields:FIELD_NAME_VALUE_OPERATOR[]):SQL_VALUES{
         let __fieldList:string="";
         let __values:any[] =[];
+
         _fields.forEach((field, index )=>{
             if(index  < _fields.length-1){
                 if(field.separator === "NONE"){

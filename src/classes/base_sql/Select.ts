@@ -73,14 +73,14 @@ export default class Select extends Sql implements SELECT{
         
 
         //write code of clause
-        let ClauseFieldValues!:any;
+        let ClauseFieldValues!:SQL_VALUES;
         if(_clauseFields !== undefined){
             
             ClauseFieldValues  = this.clauseMaker(_clauseFields)
             
             __sql = ` ${__sql} WHERE ${ClauseFieldValues.sql}`
         }else{
-            ClauseFieldValues.values = [];
+            ClauseFieldValues = {"sql" : "sql", "values" : []};
         }
 
         __sql =  `${__sql}${this.orderBy(_orderBy?.fields, _orderBy?.by)}${this.limit(_limit)}${this.offset(_offset)}`

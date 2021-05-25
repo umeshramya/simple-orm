@@ -93,17 +93,19 @@ let org = new Table("orgTest", [
  * ===============
  */
 // console.log(user.selectById({"fieldName": "id", "value" : 1},["id", "email", "username"], {"fields" : ["id", "email"], "by" : "DESC"}))
-// console.log(user.select([
-//     {"fieldName" : "name", "value" : "umesh", "operator" : "=", "separator" : "AND"},
-//     {"fieldName" : "gender", "value" : "Male", "operator" : "!=" , "separator" : "OR"},
-//     {"fieldName" : "email", "value" : "%umesh@gmail.com%", "operator" : "LIKE" , "separator" : "NONE" },
-// ],["id", "name", "gender"], {}, 100, 50,{
-//     "type" : "INNER JOIN",
-//     "otherTable" : "orgnization",
-//     "otherTableSelectField" : ["organization_name", "address"],
-//     "otherTableJoinField" : "id",
-//     "thistableJoinField" : "organizationId"
-// }))
+console.log(user.select([
+    {"fieldName" : "name", "value" : "umesh", "operator" : "=", "separator" : "AND"},
+    {"fieldName" : "gender", "value" : "Male", "operator" : "!=" , "separator" : "OR"},
+    {"fieldName" : "email", "value" : "%umesh@gmail.com%", "operator" : "LIKE" , "separator" : "NONE" },
+],["id", "name", "gender"], {}, 100, 50,{
+    "type" : "INNER JOIN",
+    "otherTable" : "orgnization",
+    "otherTableSelectField" : ["organization_name", "address"],
+    "otherTableJoinField" : "id",
+    "thistableJoinField" : "organizationId"
+}))
+
+console.log(user.select())
 
 /**
  * =====================
@@ -161,7 +163,7 @@ let org = new Table("orgTest", [
 // ]))
 
 
-console.log(user.getConstraint("user_org"))
+// console.log(user.getConstraint("user_org"))
 
 
 
