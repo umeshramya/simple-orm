@@ -110,7 +110,7 @@ export default class Table implements TABLE, SQL_MASTER {
      * @returns sql string and values array of the clause
      */
     select(_clauseFields?:FIELD_NAME_VALUE_OPERATOR[],  _selectedFields ?:string[], _orderBy?:{fields:string[], by:"ASC" | "DESC"}, _limit?:number, _offset?:number,
-    _join ?:JOIN
+    _join ?:JOIN[]
     ):SQL_VALUES  {
         return this.selectCls.select(_clauseFields, _selectedFields, {
             "fields" : _orderBy?.fields ? _orderBy.fields : [],

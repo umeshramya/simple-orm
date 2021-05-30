@@ -41,7 +41,7 @@ export default class Select extends Sql implements SELECT{
      */
     public select(_clauseFields?:FIELD_NAME_VALUE_OPERATOR[],  _selectedFields ?:string[], 
         _orderBy?:{fields:string[], by:"ASC" | "DESC"}, _limit?:number, _offset?:number,
-        _join ?:JOIN
+        _join ?:JOIN[]
         
         ):SQL_VALUES {
         let __sql:string="";
@@ -55,19 +55,27 @@ export default class Select extends Sql implements SELECT{
         }else{
             let _selectedFieldWithTable = _selectedFields.map(el=>`${this._tableName}.${el}`);
             if(_join !== undefined){
-                if(_join.otherTableSelectField !== undefined){
-                    _join.otherTableSelectField.forEach(el=>{
-                        _selectedFieldWithTable.push(`${_join.otherTable}.${el}`);
-                    })
-                }
+                _join.forEach(el=>{
+                
+                    if(el.otherTableSelectField !== undefined){
+                        el.otherTableSelectField.forEach(it=>{
+                            _selectedFieldWithTable.push(`${el.otherTable}.${it}`);
+                        })
+                    }
+                })
+
             }
             __sql = `SELECT ${_selectedFieldWithTable.toString()} FROM ${this._tableName} `
         }
 
 
         if(_join !== undefined){
-            let join = ` INNER JOIN ${_join.otherTable} ON ${_join.otherTable}.${_join.otherTableJoinField} = ${this._tableName}.${_join.thistableJoinField}`;
-            __sql = `${__sql} ${join}`
+            _join.forEach(el=>{
+                let join = ` ${el.type} ${el.otherTable} ON ${el.otherTable}.${el.otherTableJoinField} = ${this._tableName}.${el.thistableJoinField}`;
+                __sql = `${__sql} ${join}`
+            })
+  
+           
 
         }
         

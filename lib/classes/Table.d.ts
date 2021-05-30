@@ -58,7 +58,7 @@ export default class Table implements TABLE, SQL_MASTER {
     select(_clauseFields?: FIELD_NAME_VALUE_OPERATOR[], _selectedFields?: string[], _orderBy?: {
         fields: string[];
         by: "ASC" | "DESC";
-    }, _limit?: number, _offset?: number, _join?: JOIN): SQL_VALUES;
+    }, _limit?: number, _offset?: number, _join?: JOIN[]): SQL_VALUES;
     /**
      *
      * @param _field id file dof table

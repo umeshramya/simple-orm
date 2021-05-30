@@ -36,7 +36,7 @@ interface JOIN{
 }
 interface SELECT{
     selectById(_idField:FIELD_NAME_VALUE, _selectedFields ?:string[], _orderBy?:{fields:string[], by:"ASC" | "DESC"}, _limit?:number, _offset?:number):SQL_VALUES
-    select(_clauseFields?:FIELD_NAME_VALUE_OPERATOR[],  _selectedFields ?:string[], _orderBy?:{fields:string[], by:"ASC" | "DESC"}, _limit?:number, _offset?:number, _join ?:JOIN):SQL_VALUES 
+    select(_clauseFields?:FIELD_NAME_VALUE_OPERATOR[],  _selectedFields ?:string[], _orderBy?:{fields:string[], by:"ASC" | "DESC"}, _limit?:number, _offset?:number, _join ?:JOIN[]):SQL_VALUES 
 }
 
 interface UPADTE{

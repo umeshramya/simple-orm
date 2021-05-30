@@ -27,7 +27,7 @@ export default class Select extends Sql implements SELECT {
     select(_clauseFields?: FIELD_NAME_VALUE_OPERATOR[], _selectedFields?: string[], _orderBy?: {
         fields: string[];
         by: "ASC" | "DESC";
-    }, _limit?: number, _offset?: number, _join?: JOIN): SQL_VALUES;
+    }, _limit?: number, _offset?: number, _join?: JOIN[]): SQL_VALUES;
     private orderBy;
     private offset;
     private limit;
