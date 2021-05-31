@@ -71,7 +71,7 @@ export default class Select extends Sql implements SELECT{
 
         if(_join !== undefined){
             _join.forEach(el=>{
-                let join = ` ${el.type} ${el.otherTable} ON ${el.otherTable}.${el.otherTableJoinField} = ${this._tableName}.${el.thistableJoinField}`;
+                let join = ` ${el.type} ${el.otherTable} ON ${el.otherTable}.${el.otherTableJoinField} = ${el.anotherTable || this._tableName }.${el.anotherTableJoinField || el.thistableJoinField}`;
                 __sql = `${__sql} ${join}`
             })
   

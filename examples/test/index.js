@@ -108,6 +108,7 @@ console.log(user.select([
     "otherTableJoinField" : "id",
     "thistableJoinField" : "patientId",
     "otherTable" : "doctor",
+    "anotherTable" : "org",
     "otherTableSelectField" : ["name"]
 }
 ]))

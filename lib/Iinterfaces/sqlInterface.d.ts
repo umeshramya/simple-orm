@@ -29,9 +29,11 @@ interface FIELD_NAME_VALUE_OPERATOR extends FIELD_NAME_VALUE {
 interface JOIN {
     type: "INNER JOIN" | "LEFT JOIN" | "RIGHT JOIN" | "CROSS JOIN";
     otherTable: string;
+    anotherTable?: string;
     otherTableSelectField?: string[];
     otherTableJoinField: string;
-    thistableJoinField: string;
+    anotherTableJoinField?: string;
+    thistableJoinField?: string;
 }
 interface SELECT {
     selectById(_idField: FIELD_NAME_VALUE, _selectedFields?: string[], _orderBy?: {
