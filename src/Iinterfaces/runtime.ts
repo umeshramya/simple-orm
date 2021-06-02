@@ -1,4 +1,4 @@
-import { StringType, NumberType, EnumType, DateType, BooleanType, DoubleType, TextType, CURRENT_TIMESTAMP_TYPE, NULL_TYPE, AS_DEFINED_TYPE} from "./tableInterface"
+import { StringType, NumberType, EnumType, DateType, DateTimeType,BooleanType, DoubleType, TextType, CURRENT_TIMESTAMP_TYPE, NULL_TYPE, AS_DEFINED_TYPE} from "./tableInterface"
 // run time custom type check fucntions
 
 function stringType(obj:any ):obj is StringType{
@@ -18,6 +18,14 @@ function stringType(obj:any ):obj is StringType{
 }
 function dateType(obj:any ):obj is DateType{
     if(obj.Date){
+        return obj
+    }else{
+        return false
+    }
+}
+
+function dateTimeType(obj:any ):obj is DateTimeType{
+    if(obj.DateTime){
         return obj
     }else{
         return false
@@ -80,4 +88,4 @@ function AS_DEFINED(obj:any ):obj is AS_DEFINED_TYPE{
 
 
 
-export { stringType, numberType, enumType, dateType, booleanType, doubleType, textType, CURRENT_TIMESTAMP, NULL, AS_DEFINED}
+export { stringType, numberType, enumType, dateType, dateTimeType, booleanType, doubleType, textType, CURRENT_TIMESTAMP, NULL, AS_DEFINED}

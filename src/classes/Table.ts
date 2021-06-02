@@ -1,5 +1,5 @@
 import { FIELD, FIELD_NAME_VALUE_OPERATOR, JOIN, SQL_VALUES, SQL_VALUES_MANY, TABLE } from "../Iinterfaces";
-import {stringType, numberType, enumType, dateType, booleanType, doubleType, textType, CURRENT_TIMESTAMP, NULL, AS_DEFINED} from "../Iinterfaces/runtime"
+import {stringType, numberType, enumType, dateType, booleanType, doubleType, textType, CURRENT_TIMESTAMP, NULL, AS_DEFINED, dateTimeType} from "../Iinterfaces/runtime"
 import { FIELD_NAME_VALUE, SQL_MASTER } from "../Iinterfaces";
 import Delete from "./base_sql/Delete";
 import Insert from "./base_sql/Insert";
@@ -174,6 +174,10 @@ export default class Table implements TABLE, SQL_MASTER {
 
             else if (dateType(curField.type)) {
                 __fields = __fields + " date"
+            }
+
+            else if(dateTimeType(curField.type)){
+                __fields = __fields + " datetime"
             }
 
             else if (textType(curField.type)) {

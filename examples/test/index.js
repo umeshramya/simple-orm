@@ -12,6 +12,12 @@ let user = new Table("userTest", [
 
     },
     {
+        "fieldName" : "dateTime",
+        "type" : {"DateTime" : "DateTime"},
+        "default" : {"CURRENT_TIMESTAMP" : "CURRENT_TIMESTAMP"}
+        
+    },
+    {
         "fieldName": "username",
         "type": {"String" : "String", "size" : 150},
         "unique": true,
@@ -82,7 +88,7 @@ let org = new Table("orgTest", [
 
 
 //return the sql string and values of arguments
-// console.log(user.createTable())
+console.log(user.createTable())
 // console.log(org.createTable())
 // console.log(user.relatetable("orgId", "orgTest", "id", "RESTRICT", "RESTRICT"))
 

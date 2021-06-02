@@ -31,6 +31,12 @@ interface DateType  {
     Date: "Date";
 }
 /**
+ * DateTime
+ */
+interface DateTimeType{
+    DateTime : "DateTime";
+}
+/**
  * Boolean
  */
 interface BooleanType{
@@ -77,7 +83,7 @@ interface FIELD{
      * 
      * EnumType has "enumValues" as one more property
      */
-    type  : StringType | NumberType | EnumType | DateType | TextType | BooleanType | DoubleType | TextType
+    type  : StringType | NumberType | EnumType | DateType | DateTimeType|TextType | BooleanType | DoubleType | TextType
     /**
      * is the filed primery key
      */
@@ -114,4 +120,4 @@ interface TABLE{
 
 
 export type {TABLE, FIELD  }
-export type { StringType, NumberType, EnumType, DateType, BooleanType, DoubleType, TextType, CURRENT_TIMESTAMP_TYPE, NULL_TYPE, AS_DEFINED_TYPE}
+export type { StringType, NumberType, EnumType, DateType, DateTimeType,BooleanType, DoubleType, TextType, CURRENT_TIMESTAMP_TYPE, NULL_TYPE, AS_DEFINED_TYPE}
