@@ -132,11 +132,11 @@ console.log(user.select())
 //     {"fieldName" : "email", "value" : "umeshbilagi@gmail.com"}
 // ]))
 
-// console.log(user.update(
-//     [{"fieldName" : "pincode", "value" : "589057"}, {"fieldName" : "mobile", "value" : "9856789"}],
-//     [   {"fieldName" : "mobile", "value" : "", "operator" : "=", "separator" : "OR"},
-//         {"fieldName" : "pincode", "value" : "", "operator" : "=", "separator" : ""}]
-// ))
+console.log(user.update(
+    [{"fieldName" : "pincode", "value" : "589057"}, {"fieldName" : "mobile", "value" : "9856789"}],
+    [   {"fieldName" : "mobile", "value" : "", "operator" : "=", "separator" : "OR"},
+        {"fieldName" : "pincode", "value" : "", "operator" : "=", "separator" : ""}]
+))
 
 
 /***

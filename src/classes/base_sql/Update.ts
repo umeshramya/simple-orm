@@ -35,7 +35,8 @@ export default class Update extends Sql{
         __fieldStr = __fieldStr.substring(0, __fieldStr.length -1);
        let updatevalues = this.clauseMaker(_clauseFileds)
 
-        __sql = `UPDATE ${this._tableName} SET ${__fieldStr} WHERE ${this._tableName}.${updatevalues.sql}`;
+        __sql = `UPDATE ${this._tableName} SET ${__fieldStr} WHERE ${updatevalues.sql}`;
+        // __sql = `UPDATE ${this._tableName} SET ${__fieldStr} WHERE ${this._tableName}.${updatevalues.sql}`;
         
         updatevalues.values.forEach(el=>{
             __values.push(el)
